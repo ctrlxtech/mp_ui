@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Panda</title>
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <link rel="stylesheet" href="./css/jquery-ui.min.css">
+        <link rel="stylesheet" href="./css/panda.css">
+        <link rel="stylesheet" href="./css/hover.css">
+        <script type="text/javascript" src="./js/jquery.js">
+        </script>
+        <script type="text/javascript" src="./js/bootstrap.js">
+        </script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js">
+        </script>
+        <script type="text/javascript" src="./js/panda.js">
+        </script>
+    </head>
+    <body>
+        <nav id="mp-navbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <a class="mp-pandaIcon" href="www.facebook.com"></a>
+                <div class="mp-navigation">
+                    <ul>
+                        <li>
+                            <a class="mp-pageHeader hvr-float " data-mpShow="true" data-mpLoaded="true" data-mpPageId="panda_home">Home</a>
+                        </li>
+                        <li>
+                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_bookMassage" >Book Massage</a>
+                        </li>
+                        <li>
+                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_gift" data-mpPageType="other">Give a Gift</a>
+                        </li>	
+						 <li>
+                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_login" data-mpPageType="popup">Login</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle mp-pageHeader hvr-float" data-toggle="dropdown" role="button" aria-expanded="false">Cart<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">item One</a>
+                                </li>
+                                <li>
+                                    <a href="#">item Two</a>
+                                </li>
+                                <li>
+                                    <a href="#">item Three</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Tab panes -->
+        <div id="mp-mainContent" class="jumbotron">
+            <div id="panda_home" class="mp-pageContent container-fluid" >
+                <div class="panda-home-partOne">
+                    <h1>Massage, At Your Door</h1>
+                    <h2>Anywhere. Anytime. Starting at $79.</h2>
+                    <a class="mp-pageHeader mp-homebookNow" data-mpPageId="panda_bookMassage">Book Now</a>
+                </div>
+                <div class="row panda-home-partTwo">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="mp-massageTypePreview mp-left mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails">
+                        	<input type="hidden" name="panda-massageType" value="swedish"/>
+                            <img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
+                            <div class="mp-massageTypePreview-text">
+                                <span class="mp-massageTypePreview-name">Swedish Massage for</span>
+                                <span class="mp-massageTypePreview-price">$79/hr</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="mp-massageTypePreview mp-right mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails">
+                            <input type="hidden" name="panda-massageType" value="deepTissue"/>
+							<img class="mp-massageTypePreview-image" src="./image/homePage_DeepTissue.png"/>
+                            <div class="mp-massageTypePreview-text">
+                                <span class="mp-massageTypePreview-name">Deep Tissue Massage for</span>
+                                <span class="mp-massageTypePreview-price">$79/hr</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mp-seeMoreOptions mp-pageHeader" data-mpPageId="panda_bookMassage">
+                        <button type="button" class="btn btn-success">
+                            See more options
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="panda-home-partThree">
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="mp-whyus mp-left">
+                            <img class="mp-whyus-image thumbnail hvr-bob" src="./image/homePage_bestTherapists.png"/><h2 class="mp-whyus-header">The Best Therapists</h2>
+                            <div class="mp-whyus-text">
+                                State licensed, insured
+                            </div>
+                            <div class="mp-whyus-text">
+                                background checked
+                            </div>
+                            <div class="mp-whyus-text">
+                                and personally vetted
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="mp-whyus mp-center">
+                            <img class="mp-whyus-image thumbnail hvr-bob" src="./image/homePage_DeliverToYou.png"/><h2 class="mp-whyus-header">Deliver To You</h2>
+                            <div class="mp-whyus-text">
+                                Same-day, in-home 
+                            </div>
+                            <div class="mp-whyus-text">
+                                7 days a week,  9am to 10pm 
+                            </div>
+                            <div class="mp-whyus-text">
+                                massage table, sheets, and oils
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div class="mp-whyus mp-right">
+                            <img class="mp-whyus-image thumbnail hvr-bob" src="./image/howPage_RestAssured.png"/><h2 class="mp-whyus-header">Rest Assured</h2>
+                            <div class="mp-whyus-text">
+                                Book in minutes
+                            </div>
+                            <div class="mp-whyus-text">
+                                pay online
+                            </div>
+                            <div class="mp-whyus-text">
+                                simple and safe
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
