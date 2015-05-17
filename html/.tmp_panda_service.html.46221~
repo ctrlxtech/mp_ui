@@ -1,7 +1,0 @@
-
-<div id="panda_service" class="mp-pageContent jumbotron" style="display:none">
-    <div class="container panda-home-partOne">
-        <h1>Service</h1> 
-		<a class="mp-pageHeader" data-mpPageId="panda_card">Card</a>    
-    </div>
-</div>
