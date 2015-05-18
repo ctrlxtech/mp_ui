@@ -75,8 +75,11 @@ var massageDetailsPage = (function(){
             $(this).find('#spinner').val('');
             $(this).find('input[name="timeInput"]').val('');
             $(this).find('input[name="genderPreferred"]').val('');
-			window.scrollTo(0, 0);
+			
         },
+		afterShow : function(){
+			window.scrollTo(0, 0);
+		},
         afterResponse: function(){
             $("#datepicker").datepicker();
             $("#spinner").spinner({
@@ -247,6 +250,12 @@ var pageController = {
                     pandaPageObj[newPageId].mpShow = 'true';
                     pageController.setup($this.attr(headerAttr.mpPageId));
                 }
+				if (window[newPageControllerName]) {
+                var newPageController = window[newPageControllerName];
+                if (typeof(newPageController) === 'object' && typeof(newPageController.afterShow) === 'function') {
+                    newPageController.afterShow.apply($('#' + newPageId), $this);
+                }
+            }
 				
                 
             });

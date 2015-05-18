@@ -118,12 +118,6 @@ div.mp-pageContent {
     font-weight: bold;
 }
 
-.mp-massageTypePreview-image {
-    border-radius: 15px;
-    overflow: hidden;
-    height: 228px;
-    width: 480px;
-}
 
 .mp-massageTypePreview-text {
     line-height: 30px;
@@ -139,7 +133,7 @@ div.mp-pageContent {
 }
 
 .mp-seeMoreOptions button {
-    margin: 0 auto !important;
+  margin: 30px auto !important;
     font-size: 18px;
     padding-right: 50px;
     padding-left: 50px;
@@ -178,16 +172,6 @@ div.mp-pageContent {
     font-weight: bold;
 }
 
-.mp-massageTypePreview.mp-bookMassagePreview {
-    width: 480px;
-    height: 400px;
-}
-
-.mp-massageTypePreview.mp-bookMassagePreview .mp-massageTypePreview-image {
-    width: 480px;
-    height: 350px;
-}
-
 /** end book massage page **/
 /** begin massage detail page **/
 .mp-breadcrumb {
@@ -205,9 +189,99 @@ div.mp-pageContent {
     color: #2ecc71;
 }
 
-.mp-massageDetails {
+
+.mp-massageDetails-title {
+    color: rgb(102, 102, 102);
+    font-family: "Oxygen" !important;
+    font-size: 32px !important;
+    font-weight: 300 !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+.mp-massageDetails-description, .mp-massageDetails-info {
+    font-size: 20px !important;
+    line-height: 32px !important;
+    color: #535353;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Oxygen" !important;
+}
+
+.mp-fullwidth {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.mp-massageDetails-panel {
+    height: 1200px;
+    overflow-y: visible;
+	margin: 30px auto;
+}
+
+.btn-group.mp-massageDetails-input {
+    margin: 20px 0px;
+}
+
+.btn-group.mp-massageDetails-input button.dropdown-toggle, #datepicker {
+    width: 360px;
+    height: 48px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.btn-group.mp-massageDetails-input button.dropdown-toggle .glyphicon-triangle-bottom {
+    float: right;
+    margin-top: 2px;
+}
+
+.btn-group.mp-massageDetails-input ul.dropdown-menu {
+    width: 360px;
+}
+
+.btn-group.mp-massageDetails-input ul.dropdown-menu li.mp-item {
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+}
+
+/** end massage detail page **/
+/**
+ * @media query for phone
+ */
+@media screen and (max-width: 768px) {
+	.mp-massageTypePreview .mp-massageTypePreview-image{
+	  box-shadow: 0px 0px 10px rgb(95, 95, 95);
+	  border-radius:10px; 
+	   overflow: hidden;
+        height: 50vw;
+       width:100%;
+	}
+	
+	  .mp-massageTypePreview {
+         width: 90%;
+       height: 60vw;
+		margin:30px auto;
+     }
+	
+	 .mp-whyus .mp-whyus-image{
+  	  margin-left:45%;
+    }
+	
+  
+    .mp-massageTypePreview.mp-bookMassagePreview .mp-massageTypePreview-image {
+    width: 100%;
+    height: 60vw;
+   }
+   
+   .mp-massageTypePreview.mp-bookMassagePreview {
+    width: 100%;
+    margin: 30px auto;
+    height: 70vw;
+  }
+  
+   .mp-massageDetails {
     height: 350px;
-    width: 480px !important;
+    width: 80%;
     border-radius: 10px;
     margin: 30px auto;
 }
@@ -215,85 +289,12 @@ div.mp-pageContent {
 .mp-massageDetails-image {
     border-radius: 15px;
     overflow: hidden;
-    height: 350px;
-    width: 480px;
+    height: 50vw;
+    width: 100%;
 }
 
-.mp-massageDetails-title {
-  color: rgb(102, 102, 102);
-  font-family: "Oxygen" !important;
-  font-size: 32px !important;
-  font-weight: 300 !important;
-  -webkit-font-smoothing: antialiased;
 }
 
-.mp-massageDetails-description, .mp-massageDetails-info
-{
-font-size: 20px !important;
-  line-height: 32px !important;
-   color: #535353;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-   font-family: "Oxygen" !important;
-}
-
-
-.mp-fullwidth{
-	margin-left: 0%;
-    margin-right: 0%;
-}
-
-.mp-massageDetails-panel{
-	height:1200px;
-  overflow-y:visible;
-}
-
-.btn-group.mp-massageDetails-input {
-	margin: 20px 0px;
-}
-
-.btn-group.mp-massageDetails-input button.dropdown-toggle ,#datepicker{
-	width:360px;
-	 height: 48px;
-	 font-size:18px;
-	  text-align:center;
-}
-
-.btn-group.mp-massageDetails-input button.dropdown-toggle .glyphicon-triangle-bottom{
-	 float: right;
-     margin-top: 2px;
-}
-
-.btn-group.mp-massageDetails-input ul.dropdown-menu{
-	 width: 360px;
-} 
-
-.btn-group.mp-massageDetails-input ul.dropdown-menu li.mp-item{
-	 height: 36px;
-	 line-height: 36px;
-	 font-size:18px;
-}
-    
-
-
-
-/** end massage detail page **/
-/**
- * @media query for phone
- */
-@media screen and (max-width: 768px) {
-	.mp-massageTypePreview{
-      margin : 30px auto;
-	 box-shadow: 0px 0px 10px rgb(95, 95, 95);
-	  height: 280px;
-      width: 480px;
-	  border-radius:10px; 
-	}
-	
-	 .mp-whyus .mp-whyus-image{
-  	margin-left:45%;
-  }
-}
 
 /**
  * @media query for laptop or tablet
@@ -301,7 +302,7 @@ font-size: 20px !important;
 
 @media screen and (min-width: 768px) {
   .mp-left {
-   width : 70%;
+   width : 80%;
    margin : 30px auto;
   }
   
@@ -315,10 +316,18 @@ font-size: 20px !important;
   }
   
   .mp-massageTypePreview {
-  	height: 280px;
-    width: 480px !important;
-	border-radius:10px;
-  	transition: box-shadow 0.5s ease;  
+  width: 80%;
+   border-radius: 10px;
+  transition: box-shadow 0.5s ease 0s;
+  height: 25vw;
+  margin:30px auto;
+  }
+  
+  .mp-massageTypePreview-image {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 20vw;
+    width:100%;
   }
   
   .mp-whyus .mp-whyus-image{
@@ -344,7 +353,31 @@ font-size: 20px !important;
 	top:80px;
 	left:-5%;	
    }
+   
+    .mp-massageTypePreview.mp-bookMassagePreview .mp-massageTypePreview-image {
+     width: 100%;
+    height: 30vw;
+   }
+   
+   .mp-massageTypePreview.mp-bookMassagePreview {
+    width: 95%;
+    margin: 30px auto;
+   height: 36vw;
+  }
+  
+  .mp-massageDetails {
+    height: 350px;
+    width: 80%;
+    border-radius: 10px;
+    margin: 30px auto;
+}
 
+.mp-massageDetails-image {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 30vw;
+    width: 100%;
+}
 
 }
 
