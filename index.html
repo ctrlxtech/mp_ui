@@ -2,19 +2,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Cache-control" content="no-cache">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Panda</title>
         <link rel="stylesheet" href="./css/bootstrap.css">
         <link rel="stylesheet" href="./css/jquery-ui.min.css">
         <link rel="stylesheet" href="./css/panda.css">
+        <link rel="stylesheet" href="./css/smallScreen.css">
+        <link rel="stylesheet" href="./css/largeScreen.css">
         <link rel="stylesheet" href="./css/hover.css">
         <script type="text/javascript" src="./js/jquery.js">
         </script>
         <script type="text/javascript" src="./js/bootstrap.js">
         </script>
-        <script type="text/javascript" src="./js/jquery-ui.min.js">
+        <script type="text/javascript" src="./js/jquery.history.js">
         </script>
+        <script type="text/javascript" src="./js/jquery-ui.min.js">
+        </script>	
+		<script type="text/javascript" src="./js/validator.js">
+        </script>
+		<script type="text/javascript" src="https://js.stripe.com/v2/">			
+		</script>
         <script type="text/javascript" src="./js/panda.js">
         </script>
     </head>
@@ -25,35 +34,33 @@
                 <div class="mp-navigation">
                     <ul>
                         <li>
-                            <a class="mp-pageHeader hvr-float " data-mpShow="true" data-mpLoaded="true" data-mpPageId="panda_home">Home</a>
+                            <a href="#/apricots" class="mp-pageHeader" data-mpShow="true" data-mpLoaded="true" data-mpPageId="panda_home">Home</a>
                         </li>
                         <li>
-                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_bookMassage" >Book Massage</a>
+                            <a href="#/bananas" class="mp-pageHeader" data-mpPageId="panda_bookMassage" data-mpPageType="other">Book Massage</a>
                         </li>
                         <li>
-                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_gift" data-mpPageType="other">Give a Gift</a>
-                        </li>	
-						 <li>
-                            <a class="mp-pageHeader hvr-float " data-mpPageId="panda_login" data-mpPageType="popup">Login</a>
+                            <a href="#/coconuts" class="mp-pageHeader" data-mpPageId="panda_gift" data-mpPageType="other">Give a Gift</a>
                         </li>
-                 
+                        <li>
+                            <a class="mp-pageHeader" data-mpPageId="panda_login" data-mpPageType="popup" data-mpPageType="other">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Tab panes -->
         <div id="mp-mainContent" class="jumbotron">
-            <div id="panda_home" class="mp-pageContent container-fluid" >
+            <div id="panda_home" class="mp-pageContent container-fluid">
                 <div class="panda-home-partOne">
                     <h1>Massage, At Your Door</h1>
                     <h2>Anywhere. Anytime. Starting at $79.</h2>
-                    <a class="mp-pageHeader mp-homebookNow" data-mpPageId="panda_bookMassage">Book Now</a>
+                    <a class="mp-pageHeader mp-homebookNow" data-mpPageId="panda_bookMassage" data-mpPageType="other">Book Now</a>
                 </div>
                 <div class="row panda-home-partTwo">
                     <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="mp-massageTypePreview mp-left mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails">
-                        	<input type="hidden" name="panda-massageType" value="swedish"/>
-                            <img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
+                        <div class="mp-massageTypePreview mp-left mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails" data-mpPageType="other">
+                            <input type="hidden" name="panda-massageType" value="swedish"/><img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
                             <div class="mp-massageTypePreview-text">
                                 <span class="mp-massageTypePreview-name">Swedish Massage for</span>
                                 <span class="mp-massageTypePreview-price">$79/hr</span>
@@ -61,16 +68,15 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
-                        <div class="mp-massageTypePreview mp-right mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails">
-                            <input type="hidden" name="panda-massageType" value="deepTissue"/>
-							<img class="mp-massageTypePreview-image" src="./image/homePage_DeepTissue.png"/>
+                        <div class="mp-massageTypePreview mp-right mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails" data-mpPageType="other">
+                            <input type="hidden" name="panda-massageType" value="deeptissue"/><img class="mp-massageTypePreview-image" src="./image/homePage_DeepTissue.png"/>
                             <div class="mp-massageTypePreview-text">
                                 <span class="mp-massageTypePreview-name">Deep Tissue Massage for</span>
                                 <span class="mp-massageTypePreview-price">$79/hr</span>
                             </div>
                         </div>
                     </div>
-                    <div class="mp-seeMoreOptions mp-pageHeader" data-mpPageId="panda_bookMassage">
+                    <div class="mp-seeMoreOptions mp-pageHeader" data-mpPageId="panda_bookMassage" data-mpPageType="other">
                         <button type="button" class="btn btn-success">
                             See more options
                         </button>
@@ -123,5 +129,6 @@
                 </div>
             </div>
         </div>
+   
     </body>
 </html>
