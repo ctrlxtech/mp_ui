@@ -7,6 +7,7 @@ nav#mp-navbar {
 
 .jumbotron {
     background-color: #FAFAFA !important;
+    margin-bottom: 0px !important;
 }
 
 hr {
@@ -47,7 +48,7 @@ hr {
 .mp-navigation ul li a {
     text-decoration: none;
     font-family: 'Oxygen', sans-serif;
-    color: #8e8e8e;
+    color: #626060;
     font-size: 1.2em;
     padding: .2em .8em;
     text-transform: uppercase;
@@ -112,14 +113,14 @@ div.mp-pageContent {
 
 .mp-massageTypePreview-text span.mp-massageTypePreview-name {
     font-size: 24px;
-	display : inline;
+    display: inline;
 }
 
 .mp-massageTypePreview-text span.mp-massageTypePreview-price {
-   font-size: 26px;
-   padding-left: 20px;
-   font-weight: bold;
-   display : inline;
+    font-size: 26px;
+    padding-left: 20px;
+    font-weight: bold;
+    display: inline;
 }
 
 .mp-massageTypePreview-text {
@@ -164,16 +165,16 @@ div.mp-pageContent {
 }
 
 .mp-massageTypePreview-text.mp-bookMassagePreview-text span.mp-massageTypePreview-name {
-  font-size: 20px;
-font-weight: 100;
-display: inline;
+    font-size: 20px;
+    font-weight: 100;
+    display: inline;
 }
 
 .mp-massageTypePreview-text.mp-bookMassagePreview-text span.mp-massageTypePreview-price {
-   font-size: 22px;
-padding-left: 20px;
-font-weight: bold;
-display: inline;
+    font-size: 22px;
+    padding-left: 20px;
+    font-weight: bold;
+    display: inline;
 }
 
 /** end book massage page **/
@@ -220,7 +221,6 @@ display: inline;
     overflow-y: visible;
     margin: 30px auto;
 }
-
 
 .btn-group.mp-massageDetails-input {
     margin: 20px 0px;
@@ -291,37 +291,36 @@ display: inline;
 }
 
 /** checkout page**/
-.mp-paymentForm{
-	position:relative;
-	top:20px;
+.mp-paymentForm {
+    position: relative;
+    top: 20px;
 }
 
-input[type=checkbox] {
-
- -ms-transform: scale(1.5); /* IE */
- -moz-transform: scale(1.5); /* FF */
- -webkit-transform: scale(1.5); /* Safari and Chrome */
- -o-transform: scale(1.5); /* Opera */
-  padding: 10px;
+input[type = checkbox] {
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    padding: 10px;
 }
 
-.mp-textDefault{
-	color: #1867DA;
+.mp-textDefault {
+    color: #1867DA;
     font-family: "Oxygen", sans-serif;
     font-weight: 300;
     font-size: 18px;
 }
 
-.form-control.mp-checkoutMonth{
-	width:35%;
-	min-width : 80px;
-	display:inline;
+.form-control.mp-checkoutMonth {
+    width: 35%;
+    min-width: 80px;
+    display: inline;
 }
 
-.form-control.mp-checkoutYear{
-	width:60%;
-	min-width : 160px;
-	display:inline;
+.form-control.mp-checkoutYear {
+    width: 60%;
+    min-width: 160px;
+    display: inline;
 }
 
 .mp-checkoutSection-left {
@@ -335,20 +334,20 @@ input[type=checkbox] {
 .mp-checkoutSection .mp-useBilling {
     width: 80%;
     margin-left: 30px;
-	margin-bottom: 1px;
+    margin-bottom: 1px;
 }
 
-.mp-returnInfo{
-	font-family: "Oxygen", sans-serif;
+.mp-returnInfo {
+    font-family: "Oxygen", sans-serif;
     font-weight: 300;
     font-size: 24px;
-	color: #5CB85C;
-	cursor:pointer;
-	margin-left:20px;
+    color: #5CB85C;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
-.mp-asterisk{
-	color:red;
+.mp-asterisk {
+    color: red;
 }
 
 .mp-summary-amount {
@@ -366,6 +365,53 @@ input[type=checkbox] {
     opacity: 1;
 }:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #535353;
+}
+
+/** helpCenter **/
+.mp-helpCenterTitle {
+    text-align: center;
+}
+
+.mp-aboutTitle {
+    text-align: center;
+}
+
+#panda_about p {
+    font-family: "Oxygen", sans-serif;
+    color: #626060;
+    font-size: 0.8em;
+}
+
+#panda_helpCenter .panel .panel-body p {
+    font-family: "Oxygen", sans-serif;
+    color: #626060;
+    font-size: 1.2em;
+}
+
+.mp-successIcon {
+    width: 50px;
+    height: 50px;
+    margin-right: 3%;
+    float: left;
+}
+
+.mp-successInfo {
+    font-family: "Oxygen", sans-serif;
+    font-size: 2.4em;
+    margin-top: 20px;
+	margin-left:auto;
+	margin-right:auto;
+    width: 80%;
+}
+
+.mp-successTitle{
+	padding-left: 20% !important;
+}
+
+#panda_success .panel .panel-body{
+	 font-family: "Oxygen", sans-serif;
+    color: #626060;
+    font-size: 0.6em;
 }
 
 

@@ -2,16 +2,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="Cache-control" content="no-cache">
+        <meta http-equiv="Cache-control" content="no-cache">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Panda</title>
-        <link rel="stylesheet" href="./css/bootstrap.css">
-        <link rel="stylesheet" href="./css/jquery-ui.min.css">
-        <link rel="stylesheet" href="./css/panda.css">
-        <link rel="stylesheet" href="./css/smallScreen.css">
-        <link rel="stylesheet" href="./css/largeScreen.css">
-        <link rel="stylesheet" href="./css/hover.css">
+        <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="./css/panda.css" type="text/css">
+        <link rel="stylesheet" href="./css/paiPanda.css" type="text/css">
+        <link rel="stylesheet" href="./css/smallScreen.css" type="text/css">
+        <link rel="stylesheet" href="./css/largeScreen.css" type="text/css">
+        <link rel="stylesheet" href="./css/hover.css" type="text/css">
         <script type="text/javascript" src="./js/jquery.js">
         </script>
         <script type="text/javascript" src="./js/bootstrap.js">
@@ -19,11 +20,11 @@
         <script type="text/javascript" src="./js/jquery.history.js">
         </script>
         <script type="text/javascript" src="./js/jquery-ui.min.js">
-        </script>	
-		<script type="text/javascript" src="./js/validator.js">
         </script>
-		<script type="text/javascript" src="https://js.stripe.com/v2/">			
-		</script>
+        <script type="text/javascript" src="./js/validator.js">
+        </script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/">
+        </script>
         <script type="text/javascript" src="./js/panda.js">
         </script>
     </head>
@@ -51,16 +52,27 @@
         </nav>
         <!-- Tab panes -->
         <div id="mp-mainContent" class="jumbotron">
-            <div id="panda_home" class="mp-pageContent container-fluid">
+ 
+            <div id="panda_home" class="mp-pageContent container-fluid" >
                 <div class="panda-home-partOne">
                     <h1>Massage, At Your Door</h1>
                     <h2>Anywhere. Anytime. Starting at $79.</h2>
-                    <a class="mp-pageHeader mp-homebookNow" data-mpPageId="panda_bookMassage" data-mpPageType="other">Book Now</a>
+                    <a class="mp-pageHeader mp-homebookNow" data-mpPageId="panda_massageDetails" data-mpController="massageDetailsPage"  data-mpPageType="other">Book Now
+					  <div style="display:none">
+					  	<input type="hidden" name="panda-massageFeeType" value="1"/>
+					  	<input type="hidden" name="panda-massageType" value="swedish"/><img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
+                            <div class="mp-massageTypePreview-text">
+                                <span class="mp-massageTypePreview-name">Swedish Massage for</span>
+                                <span class="mp-massageTypePreview-price">$79/hr</span>
+                          </div>					
+					  </div>
+					</a>
                 </div>
                 <div class="row panda-home-partTwo">
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="mp-massageTypePreview mp-left mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails" data-mpPageType="other">
-                            <input type="hidden" name="panda-massageType" value="swedish"/><img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
+                            <input type="hidden" name="panda-massageFeeType" value="1"/>
+							<input type="hidden" name="panda-massageType" value="swedish"/><img class="mp-massageTypePreview-image" src="./image/homePage_swdishMassage.png"/>
                             <div class="mp-massageTypePreview-text">
                                 <span class="mp-massageTypePreview-name">Swedish Massage for</span>
                                 <span class="mp-massageTypePreview-price">$79/hr</span>
@@ -69,7 +81,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <div class="mp-massageTypePreview mp-right mp-pageHeader" data-mpController="massageDetailsPage" data-mpPageId="panda_massageDetails" data-mpPageType="other">
-                            <input type="hidden" name="panda-massageType" value="deeptissue"/><img class="mp-massageTypePreview-image" src="./image/homePage_DeepTissue.png"/>
+                            <input type="hidden" name="panda-massageFeeType" value="2"/>
+							<input type="hidden" name="panda-massageType" value="deeptissue"/><img class="mp-massageTypePreview-image" src="./image/homePage_DeepTissue.png"/>
                             <div class="mp-massageTypePreview-text">
                                 <span class="mp-massageTypePreview-name">Deep Tissue Massage for</span>
                                 <span class="mp-massageTypePreview-price">$79/hr</span>
@@ -129,6 +142,56 @@
                 </div>
             </div>
         </div>
-   
+        <div id="mp-footer">
+            <div class="mp-tableContainer">
+                <table class="mp-footerTable">
+                    <tr>
+                        <td>
+                            <a href="#" class="mp-pageHeader" data-mpPageType="other" data-mpController="pandaHelpCenterPage" data-mpPageId="panda_helpCenter">Help Center</a>
+                        </td>
+                        <td>
+                            Made with <span class="mp-wordLove">love</span>
+                            in Silicon Valley
+                        </td>
+                        <td class="mp-supportmassage">
+                            Support@massagepanda.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#" class="mp-pageHeader" data-mpPageType="other" data-mpPageId="panda_about">About Panda</a>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            (855) 68-PANDA 9am-10pm
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contact Us
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <span class="mp-threewords">Apply as Therapist</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <hr/>
+            <div class="mp-footerDescription">
+                ©2015 MassagePanda. All Rights Reserved. Terms of Use | Privacy Policy. Copyright 2015, Ctrl X, Inc., 39105 Cedar Blvd, Newark, CA 94560.
+            </div>
+            <br/>
+            <div class="mp-footerDescription">
+                MASSAGEPANDA®, MASSAGE AT YOUR DOOR®, and FIND A PANDA® are trademarks of Ctrl X, Inc. The contents of the MassagePanda web site are for informational
+            </div>
+            <br/>
+            <div class="mp-footerDescription">
+                purposes only. None of the information on the site should be construed or used as professional medical advice or consultation.
+            </div>
+        </div>
     </body>
 </html>

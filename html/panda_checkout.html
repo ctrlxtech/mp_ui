@@ -4,6 +4,7 @@
         <form method="POST" id="payment-form" class="form-horizontal">
         	<input type="hidden" name="stripeToken" data-serverField="true"/>
             <input type="hidden" name="amount" data-serverField="true"/>
+			<input type="hidden" name="feeType" data-serverField="true"/>
 			<input type="hidden" name="serviceDate" data-serverField="true"/>
 			<input type="hidden" name="serviceTime" data-serverField="true"/>
 			<input type="hidden" name="serviceGenderPreferred" data-serverField="true"/>
@@ -19,7 +20,7 @@
                         <label>
                             <span class="mp-asterisk">*</span>Card Number: 
                         </label>
-                        <input type="text" name="number" size="20" data-stripe="number" class="form-control" required>
+                        <input type="text" name="number" size="20" data-stripe="number" class="form-control" required />
                     </div>
                     <div class="form-group">
                         <label>
