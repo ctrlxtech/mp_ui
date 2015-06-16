@@ -174,7 +174,11 @@ overflow: hidden;
 /** begin massage details page **/
 #panda_massageDetails {
     margin-top: 20px;
+}
+#panda_gift {
+    margin-top: 20px;
 }	
+	
 
 #panda_massageDetails  hr{
 	display:none;
@@ -184,7 +188,7 @@ overflow: hidden;
 	width:100%;
 }
 
-.mp-massageDetails-panel  .mp-massageDetails-title {
+.mp-massageDetails-panel .mp-massageDetails-title, .mp-massageDetails-panel .mp-massageDetails-titlePrice {
  color: #333;
 background-color: #F5F5F5;
 border-color: #DDD;
@@ -225,6 +229,10 @@ padding: 10px;
 	width:100%;
 	min-width : 320px;
 	margin: 0 auto; 
+}
+
+.mp-checkout.mp-checkoutShort .btn {
+    width: 100%;
 }
 
 .mp-checkout-mobileTab{

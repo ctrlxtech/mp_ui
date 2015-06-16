@@ -9,26 +9,27 @@ body {
     font-weight: 300;
 }
 
-.page-wrap{
-width:100%;	
+.page-wrap {
+    width: 100%;
 }
 
-.mp-hide{
-	display:none !important;
+.mp-hide {
+    display: none !important;
 }
 
-.mp-show{
-	display:block !important;
+.mp-show {
+    display: block !important;
 }
 
 nav#mp-navbar {
     box-shadow: 0px 3px 5px #D3D3D3;
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 .jumbotron {
     background-color: #FAFAFA !important;
     margin-bottom: 0px !important;
+	padding-bottom: 10px !important;
 }
 
 .popover-content {
@@ -44,13 +45,12 @@ hr {
     margin-right: 10%;
     border-style: inset;
     border-width: 1px;
-	clear: both;
+    clear: both;
 }
 
-
 .mp-pandaIcon {
-  width: 180px;
-  height: 60px;
+    width: 180px;
+    height: 60px;
 }
 
 .dropdown-menu {
@@ -63,6 +63,7 @@ div.mp-pageContent {
     overflow: hidden;
     padding: 0 0 0 0;
 }
+
 .panda-home-partOne {
     background: url("../image/homePage-backgroundOne.jpg") no-repeat center center;
     background-size: cover;
@@ -72,6 +73,7 @@ div.mp-pageContent {
     padding-top: 100px;
     color: rgb(218, 68, 68);
 }
+
 .panda-home-partOne > a {
     top: 30px;
     font-size: 48px;
@@ -80,50 +82,55 @@ div.mp-pageContent {
     cursor: pointer;
     position: relative;
 }
+
 .panda-home-partOne > h1 {
     font-size: 56px;
     font-weight: 300;
 }
+
 .panda-home-partOne > h2 {
     font-size: 32px;
 }
+
 .mp-homebookNow {
     transition: font-size 0.3s ease;
 }
+
 .mp-homebookNow:hover {
     font-size: 56px;
 }
-.mp-testHeader{
-	width:100%;
-	margin:20px auto;
-	 text-align: center;
+
+.mp-testHeader {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
 }
 
-.mp-testHeader h3{
-	color : green;
+.mp-testHeader h3 {
+    color: green;
 }
 
 .mp-whyus .mp-whyus-text {
     font-size: 15px;
     font-family: 'Oxygen', sans-serif;
 }
+
 .mp-whyus-header {
     text-align: center;
 }
 
-.mp-test .mp-test-image{
-	border-radius : 10px;
-  box-shadow: 0 0 3px 3px #D8D8D8;
-  margin-bottom: 10px;
-	
+.mp-test .mp-test-image {
+    border-radius: 10px;
+    box-shadow: 0 0 3px 3px #D8D8D8;
+    margin-bottom: 10px;
 }
 
-.mp-test .mp-test-text{
+.mp-test .mp-test-text {
     font-size: 15px;
     font-family: 'Oxygen', sans-serif;
-	width: 70%;
-text-align: center;
-margin: 0px auto;
+    width: 70%;
+    text-align: center;
+    margin: 0px auto;
 }
 
 /**end home page **/
@@ -132,6 +139,7 @@ margin: 0px auto;
     position: relative;
     top: 30px;
     left: 15%;
+	 width: 90%;
 }
 
 .breadcrumb {
@@ -139,34 +147,50 @@ margin: 0px auto;
     font-size: 1.2em;
 }
 
+.breadcrumb li{
+  display:inline;
+}
+
+
 .breadcrumb a {
     color: #2ecc71;
 }
 
 .mp-massageDetails-title {
     color: rgb(102, 102, 102);
-    font-family: "Oxygen" ;
-    font-size: 32px ;
-    font-weight: 300 ;
+    font-family: "Oxygen";
+    font-size: 32px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+	line-height: 36px;
+}
+
+
+.mp-massageDetails-titlePrice{
+    color: rgb(102, 102, 102);
+    font-family: "Oxygen";
+    font-size: 30px;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
 }
 
 .mp-massageDetails-description, .mp-massageDetails-info {
-    font-size: 20px ;
-    line-height: 32px ;
+    font-size: 20px;
+    line-height: 32px;
     color: #535353;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-    font-family: "Oxygen" ;
+    font-family: "Oxygen";
 }
 
 .mp-fullwidth {
     margin-left: 0%;
     margin-right: 0%;
+	margin-top: 10px;
 }
 
 .mp-massageDetails-panel {
-    height: 900px;
+   	height: 960px;
     margin: 30px auto;
 }
 
@@ -231,8 +255,9 @@ margin: 0px auto;
     min-width: 200px;
     margin: 20px auto;
     height: 50px;
-	float: left;
+    float: left;
 }
+
 /** end massage detail page **/
 /** begin checkout page **/
 #panda_checkout .mp-checkout {
@@ -240,13 +265,19 @@ margin: 0px auto;
     min-width: 200px;
     margin: 20px auto;
     height: 50px;
-	float: left;
+    float: left;
 }
 
 .mp-checkout .btn {
     width: 100%;
     height: 50px;
     font-size: 18px;
+}
+
+.mp-checkout.mp-checkoutShort .btn {
+    width: 60%;
+    margin: 0px auto;
+    text-align: center;
 }
 
 .mp-paymentForm {
@@ -276,8 +307,8 @@ input[type = checkbox] {
     font-weight: 300;
 }
 
-.mp-checkout-cardImage{
-	padding-right : 15px;
+.mp-checkout-cardImage {
+    padding-right: 15px;
 }
 
 .form-group {
@@ -289,9 +320,9 @@ input[type = checkbox] {
 .form-control {
     margin-top: 6px;
     margin-bottom: 6px;
-	margin-left: 5px;
+    margin-left: 5px;
     font-family: "Oxygen", sans-serif;
-	font-weight: 300;
+    font-weight: 300;
     font-size: 18px;
     color: #8E8E8E;
     line-height: 24px;
@@ -300,8 +331,8 @@ input[type = checkbox] {
     height: 40px;
 }
 
-.form-control.mp-fullwidth{
-	width: 97%;
+.form-control.mp-fullwidth {
+    width: 97%;
     display: inline;
 }
 
@@ -314,9 +345,11 @@ input[type = checkbox] {
     width: 48%;
     display: inline;
 }
-.form-control.mp-halfwidth.mp-paddingFix{
-	margin-left:0px;
-} 
+
+.form-control.mp-halfwidth.mp-paddingFix {
+    margin-left: 0px;
+}
+
 .form-control.mp-smallwidth {
     width: 30%;
     min-width: 100px;
@@ -324,43 +357,42 @@ input[type = checkbox] {
 }
 
 .form-control.mp-tinywidth {
-   width: 17%;
+    width: 17%;
     min-width: 30px;
     display: inline;
 }
 
 .mp-checkout-summary .list-group {
-	box-shadow: 0px 0px 5px #DADADA;
+    box-shadow: 0px 0px 5px #DADADA;
     padding: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
-	border: 1px solid #DDD;
-	width:100%
-	max-width:450px;
-	min-width:320px;
+    border: 1px solid #DDD;
+    width: 100% max-width: 450px;
+    min-width:
+    320px;
 }
 
-.form-control.mp-checkoutNote{
-	width:98%;
-	max-width:450px;
-	min-width:320px;
+.form-control.mp-checkoutNote {
+    width: 98%;
+    max-width: 450px;
+    min-width: 320px;
 }
 
-.mp-checkout-summary .list-group .list-group-item{
-background-color: #FAFAFA !important;
-padding: 6px 10px;
-margin: 0px 10px;
-border: none;
-  font-family: "Oxygen";
+.mp-checkout-summary .list-group .list-group-item {
+    background-color: #FAFAFA !important;
+    padding: 6px 10px;
+    margin: 0px 10px;
+    border: none;
+    font-family: "Oxygen";
     font-weight: 300;
     font-size: 20px;
     color: #797979;
 }
 
-
-.mp-returnInfoDiv .mp-returnInfo{
-	    margin-left: 30px;
-		 cursor: pointer;
+.mp-returnInfoDiv .mp-returnInfo {
+    margin-left: 30px;
+    cursor: pointer;
 }
 
 .mp-returnInfoDiv {
@@ -368,7 +400,7 @@ border: none;
     font-weight: 300;
     font-size: 24px;
     color: #5CB85C;
-	margin-top:20px;
+    margin-top: 20px;
 }
 
 .mp-fieldRequired ::-webkit-input-placeholder:before {
@@ -400,9 +432,7 @@ border: none;
 .mp-summary-amount {
     font-size: 24px !important;
     color: #b12704 !important;
-}
-
-::-webkit-input-placeholder { /* WebKit browsers */
+}::-webkit-input-placeholder { /* WebKit browsers */
     color: #535353;
 }:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: #535353;
@@ -413,11 +443,12 @@ border: none;
 }:-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #535353;
 }
+
 /** end checkout page **/
 /** helpCenter **/
 .mp-helpCenterTitle {
     text-align: center;
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 .mp-aboutTitle {
@@ -427,7 +458,7 @@ border: none;
 #panda_about p {
     font-family: "Oxygen", sans-serif;
     color: #626060;
-     font-size: 17px;
+    font-size: 17px;
 }
 
 #panda_helpCenter .panel .panel-body p {
@@ -464,7 +495,7 @@ border: none;
 }
 
 .btn-success.disabled {
-  opacity: 1;
+    opacity: 1;
 }
 
 

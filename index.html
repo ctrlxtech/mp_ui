@@ -8,11 +8,11 @@
         <title>Panda</title>
         <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
+		<link rel="stylesheet" href="./css/hover.css" type="text/css">
         <link rel="stylesheet" href="./css/panda.css" type="text/css">
         <link rel="stylesheet" href="./css/paiPanda.css" type="text/css">
+		<link rel="stylesheet" href="./css/largeScreen.css" type="text/css">
         <link rel="stylesheet" href="./css/smallScreen.css" type="text/css">
-        <link rel="stylesheet" href="./css/largeScreen.css" type="text/css">
-        <link rel="stylesheet" href="./css/hover.css" type="text/css">
         <script type="text/javascript" src="./js/jquery.js">
         </script>
         <script type="text/javascript" src="./js/bootstrap.js">
@@ -33,9 +33,9 @@
     <body>
         <nav id="mp-leftSideNav" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left mp-largeScreenHide">
             <a href="" class="mp-pageHeader" data-mpShow="true" data-mpLoaded="true" data-mpPageId="panda_home">Home</a>
-            <a href="" class="mp-pageHeader" data-mpPageId="panda_gift">Give a Gift</a>
-            <a href="#" class="mp-pageHeader" data-mpController="pandaHelpCenterPage" data-mpPageId="panda_helpCenter">Help Center</a>
-            <a href="#" class="mp-pageHeader" data-mpPageId="panda_about">About Panda</a>
+           <a href="" class="mp-pageHeader" data-mpController="massageGiftPage"  data-mpPageId="panda_gift" >Give a Gift</a>
+            <a href="" class="mp-pageHeader" data-mpController="pandaHelpCenterPage" data-mpPageId="panda_helpCenter">Help Center</a>
+            <a href="" class="mp-pageHeader" data-mpPageId="panda_about">About Panda</a>
         </nav>
         <nav id="mp-navbar" class="navbar navbar-default navbar-fixed-top cbp-spmenu-push">
             <div class="container">
@@ -54,7 +54,7 @@
                             <a href="" class="mp-pageHeader" data-mpPageId="panda_bookMassage">Book Massage</a>
                         </li>
                         <li>
-                            <a href="" class="mp-pageHeader" data-mpPageId="panda_gift">Give a Gift</a>
+                            <a href="" class="mp-pageHeader" data-mpPageId="panda_gift" data-mpController="massageGiftPage" >Give a Gift</a>
                         </li>
                         <li>
                             <a class="mp-pageHeader" data-mpPageId="panda_login" data-mpPageType="popup">Login</a>

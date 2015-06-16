@@ -17,8 +17,7 @@
                 <img class="mp-massageDetails-image" src="./image/book_SwedishOneHour.png"/>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 mp-smallScreenPadding">
-        	
+        <div class="col-xs-12 col-sm-12 col-md-6 mp-smallScreenPadding">     	
             <div class="mp-massageDetails-panel mp-right">            	
                 <div class="mp-massageDetails-title">
                     Swedish Massage for 1 hour $79
@@ -37,8 +36,8 @@
                     Please book your massage session at least 2 hours in advance.We will reach out to our massage therapists once you have placed your order. We will not charge your card until a therapist responds and confirms the booking.
                 </p>
                 <div class="mp-massageDetails-form">
-                	<input type="hidden" name="detailsFeeType" value=""/>
-                	<div class="mp-detailsAmount" style="display:none"></div>
+                	<input type="hidden" name="detailsFeeType" value="" />
+                	<input type="hidden" name="detailsAmount" value="" />
                 	<div id="mp-massageDetails-panelAlert" class="alert alert-danger" role="alert" style="display:none">Please select <span class="alertInfo"></span></div>
                     <div class="btn-group mp-massageDetails-input">
                         <input class="mp-massageDetails-DatePicker" placeholder="Select Date" name="massageDetailsDate" type="text" />
@@ -72,14 +71,15 @@
                         </ul>
                     </div>
                   <div class="btn-group mp-massageDetails-input">
-                        <input type="number" class="mp-massageDetails-spinner" placeholder="Select a Value" min="1"  name="quantity" />
+                        <input type="number" class="mp-massageDetails-spinner" placeholder="Select a Quantity" min="1"  name="quantity" />
 						
                    </div>
 				    <div class="btn-group mp-massageDetails-input">              
 						<input placeholder="Please Enter Coupon"  name="coupon" />
                    </div>
 				   <div class="mp-checkout mp-pageHeader" data-mpPageId="panda_checkout" data-mpController="checkoutPage" >
-				    <button type="button" class="btn btn-success">
+				    <div class="mp-pageId" style="display:none">panda_massageDetails</div>
+					<button type="button" class="btn btn-success">
                             Checkout
                      </button>
 					</div>

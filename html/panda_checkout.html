@@ -13,8 +13,8 @@
     </div>
     <div class="mp-paymentForm">
         <form method="POST" id="payment-form" class="form-inline">
-            <input type="hidden" name="stripeToken" data-serverField="true"/><input type="hidden" name="amount" data-serverField="true"/><input type="hidden" name="feeType" data-serverField="true"/><input type="hidden" name="serviceDate" data-serverField="true"/><input type="hidden" name="serviceTime" data-serverField="true"/><input type="hidden" name="serviceGenderPreferred" data-serverField="true"/><input type="hidden" name="serviceQuantity" data-serverField="true"/><input type="hidden" name="serviceCoupon" data-serverField="true"/>
-            <div class="col-xs-12 col-sm-6 col-md-6 mp-smallScreenPadding">
+            <input type="hidden" name="stripeToken" data-serverField="true"/><input type="hidden" name="amount" data-serverField="true"/><input type="hidden" name="feeType" data-serverField="true"/><input type="hidden" name="serviceDate" data-serverField="true"/><input type="hidden" name="serviceTime" data-serverField="true"/><input type="hidden" name="serviceGenderPreferred" data-serverField="true"/><input type="hidden" name="serviceQuantity" data-serverField="true"/><input type="hidden" name="serviceCoupon" data-serverField="true"/><input type="hidden" name="serviceMassageType" data-serverField="true"/><input type="hidden" name="serviceMassageLength" data-serverField="true"/>
+            <div class="col-xs-12 col-sm-12 col-md-6 mp-smallScreenPadding">
                 <div class="mp-checkoutSection mp-checkoutSection-left  mp-smallScreenHide">
                     <div class="alert alert-danger mp-checkoutAlertDanger" role="alert" style="display:none">
                         <span class="payment-errors"></span>
@@ -30,7 +30,7 @@
                         <input type="text" placeholder="Email" class="form-control mp-fieldRequired mp-halfwidth" name="email" data-serverField="true" required/><input type="text" placeholder="Phone" class="form-control mp-fieldRequired mp-halfwidth" name="phone" data-serverField="true" required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Address" class="form-control mp-fieldRequired mp-fullwidth" name="al1" data-serverField="true" required/>
+                        <input type="text" placeholder="Address" class="form-control mp-fieldRequired mp-fullwidth" name="al1" data-serverField="true" required />	
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="City" class="form-control mp-fieldRequired mp-halfwidth" name="city" data-serverField="true" required/><input type="text" placeholder="State" class="form-control mp-fieldRequired mp-halfwidth" name="state" data-serverField="true" required/>
@@ -44,41 +44,22 @@
                     <div class="form-group">
                         <input type="text" placeholder="MM" class="form-control mp-fieldRequired mp-tinywidth mp-mobile-tinywidth" name="exp-month" size="2" data-stripe="exp-month" required/><input type="text" placeholder="YYYY" class="form-control mp-fieldRequired mp-smallwidth mp-mobile-smallwidth" name="exp-year" size="4" data-stripe="exp-year" required/><input type="text" placeholder="CVC" class="form-control mp-fieldRequired mp-tinywidth mp-mobile-tinywidth" name="cvc" size="4" data-stripe="cvc" required/><input type="text" placeholder="Zip / Postal" class="form-control mp-fieldRequired mp-smallwidth mp-mobile-smallwidth" name="address-zip" data-stripe="address-zip" data-serverField="true" required/>
                     </div>
-                    <div id="mp-completeOrder" class="mp-checkout">
+                    <div id="mp-completeOrder" class="mp-checkout mp-checkoutShort">
                         <button type="submit" class="btn btn-success">
                             Complete Order
                         </button>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 mp-smallScreenPadding">
+            <div class="col-xs-12 col-sm-12 col-md-6 mp-smallScreenPadding">
                 <div class="mp-checkoutSection mp-checkoutSection-right">
                     <div class="mp-checkout-summary">
                         <h2>Order Summary <span class="mp-summary-amount"></span></h2>
                         <ul class="list-group">
-                            <li class="list-group-item  mp-summary-title">
-                                Title :
-                            </li>
-                            <li class="list-group-item  mp-summary-title">
-                                Quantity 
-                            </li>
-                            <li class="list-group-item  mp-summary-date">
-                                Date : 
-                            </li>
-                            <li class="list-group-item  mp-summary-time">
-                                Time : 
-                            </li>
-                            <li class="list-group-item  mp-summary-genderPrefer">
-                                Gender Preferred : 
-                            </li>
-                            <li class="list-group-item  mp-summary-coupon">
-                                Coupon : 
-                            </li>
                         </ul>
                     </div>
                     <div class="form-group">
-                        <textarea val="" placeholder="Note to Seller (Optional)" class="form-control mp-fieldRequired mp-checkoutNote" rows="3" cols="50">
-                        </textarea>
+                        <textarea val="" placeholder="Note to Seller (Optional)" class="form-control mp-fieldRequired mp-checkoutNote" rows="3" cols="50" />
                     </div>
                     <div class="mp-returnInfoDiv">
                         <span class="mp-returnInfo" title="Shipping Info" data-container="body" data-toggle="popover" data-placement="top" data-content="We will not charge your card until a therapist responds and confirms the booking.You can change appointment time within 15 minutes after your booking has been confirmed by our therapist.">Shipping Info</span>

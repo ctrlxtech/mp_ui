@@ -118,9 +118,7 @@ var checkoutPage = (function(){
             $form.find('.mp-checkoutAlertDanger').css('display', 'block');
             $pamentError.text(errorMsg);
         }
-        
-        
-    }
+    };
     
     //private function
     function submitForm($form){
@@ -135,7 +133,7 @@ var checkoutPage = (function(){
         //TODO need use server side path !!!
         var url = '/manager/placeOrder';
         pandaAjax.post(url, serverObj, afterSubmit);
-    }
+    };
     
     //private function
     function stripeResponseHandler(status, response){
@@ -176,47 +174,103 @@ var checkoutPage = (function(){
         
         var b_zip = $paymentForm.find('input[name="address-zip"]').val();
         $paymentForm.find('input[name="zipcode"]').val(b_zip);
-    }
+    };
+    
+    function massageDetailPageAsParent($this, $parent){
+        var $massageDetailsPanel = $parent.closest('.mp-massageDetails-panel');
+        var title = $massageDetailsPanel.find('div.mp-massageDetails-title').text();
+        var date = $massageDetailsPanel.find('input[name="massageDetailsDate"]').val();
+        var time = $massageDetailsPanel.find('input[name="massageDetailsTime"]').val();
+        var gender = $massageDetailsPanel.find('input[name="genderPreferred"]').val();
+        var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
+        var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
+        var feeType = $massageDetailsPanel.find('input[name="detailsFeeType"]').val();
+        var amount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
+        var totalAmount = amount * parseInt(quantity);
+        //setup hidden form
+        var $pamentForm = $('#payment-form');
+        $pamentForm.find('input[name="amount"]').val(totalAmount);
+        $pamentForm.find('input[name="feeType"]').val(feeType);
+        $pamentForm.find('input[name="serviceDate"]').val(date);
+        $pamentForm.find('input[name="serviceTime"]').val(time);
+        $pamentForm.find('input[name="serviceGenderPreferred"]').val(gender);
+        $pamentForm.find('input[name="serviceQuantity"]').val(quantity);
+        $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
+        $pamentForm.find('button').prop('disabled', false);
+        $pamentForm.find('button').removeClass('disabled');
+        $pamentForm.find('div.alert-danger').css('display', 'none');
+        $pamentForm.find('span.checkoutAlertDanger').text('');
+        //setup summary
+        var $summary = $this.find('div.mp-checkout-summary');
+        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')')
+        var liListString = '<li class="list-group-item  mp-summary-title"></li>' +
+        '<li class="list-group-item  mp-summary-quantity"></li>' +
+        '<li class="list-group-item  mp-summary-date"></li>' +
+        '<li class="list-group-item  mp-summary-time"></li>' +
+        '<li class="list-group-item  mp-summary-genderPrefer"></li>' +
+        '<li class="list-group-item  mp-summary-coupon"></li>';
+        $summary.find('ul').html(liListString);
+        var $liList = $summary.find('ul li')
+        var index = 0;
+        $liList.eq(index++).text(title);
+        $liList.eq(index++).text('Quantity : ' + quantity);
+        $liList.eq(index++).text('Date : ' + date);
+        $liList.eq(index++).text('Time : ' + time);
+        $liList.eq(index++).text('Gender Preferred : ' + gender);
+        $liList.eq(index++).text('Coupon : ' + coupon);
+    };
+    
+    function massageGiftPageAsParent($this, $parent){
+        var $massageDetailsPanel = $parent.closest('.mp-massageDetails-panel');
+        var title = $massageDetailsPanel.find('div.mp-massageDetails-title').text();
+        var massageType = $massageDetailsPanel.find('input[name="massageDetailsType"]').val();
+        var massageLength = $massageDetailsPanel.find('input[name="massageDetailsLength"]').val();
+        var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
+        var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
+        var feeType = $massageDetailsPanel.find('input[name="detailsFeeType"]').val();
+        var amount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
+        var totalAmount = amount * parseInt(quantity);
+        
+        //setup hidden form
+        var $pamentForm = $('#payment-form');
+        $pamentForm.find('input[name="amount"]').val(totalAmount);
+        $pamentForm.find('input[name="feeType"]').val(feeType);
+        $pamentForm.find('input[name="serviceQuantity"]').val(quantity);
+        $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
+        $pamentForm.find('input[name="serviceMassageType"]').val(massageType);
+        $pamentForm.find('input[name="serviceMassageLength"]').val(massageLength);
+        $pamentForm.find('button').prop('disabled', false);
+        $pamentForm.find('button').removeClass('disabled');
+        $pamentForm.find('div.alert-danger').css('display', 'none');
+        $pamentForm.find('span.checkoutAlertDanger').text('');
+        
+        //setup summary
+        var $summary = $this.find('div.mp-checkout-summary');
+        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')')
+        var liListString = '<li class="list-group-item  mp-summary-title"></li>' +
+        '<li class="list-group-item  mp-summary-quantity"></li>' +
+        '<li class="list-group-item  mp-summary-massageType"></li>' +
+        '<li class="list-group-item  mp-summary-massageLength"></li>' +
+        '<li class="list-group-item  mp-summary-coupon"></li>';
+        $summary.find('ul').html(liListString);
+        var $liList = $summary.find('ul li')
+        var index = 0;
+        $liList.eq(index++).text(title);
+        $liList.eq(index++).text('Quantity : ' + quantity);
+        $liList.eq(index++).text('Massage Type : ' + massageType);
+        $liList.eq(index++).text('Massage Length : ' + massageLength);
+        $liList.eq(index++).text('Coupon : ' + coupon);
+    };
     
     var publicObj = {
         beforeShow: function(parent){
             var $this = $(this);
             var $parent = $(parent);
-            var $massageDetailsPanel = $parent.closest('.mp-massageDetails-panel');
-            var title = $massageDetailsPanel.find('div.mp-massageDetails-title').text();
-            var date = $massageDetailsPanel.find('input[name="massageDetailsDate"]').val();
-            var time = $massageDetailsPanel.find('input[name="massageDetailsTime"]').val();
-            var gender = $massageDetailsPanel.find('input[name="genderPreferred"]').val();
-            var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
-            var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
-            var feeType = $massageDetailsPanel.find('input[name="detailsFeeType"]').val();
-            var amount = parseInt($massageDetailsPanel.find('div.mp-detailsAmount').text());
-            var totalAmount = amount * parseInt(quantity);
-            //setup hidden form
-            var $pamentForm = $('#payment-form');
-            $pamentForm.find('input[name="amount"]').val(totalAmount);
-            $pamentForm.find('input[name="feeType"]').val(feeType);
-            $pamentForm.find('input[name="serviceDate"]').val(date);
-            $pamentForm.find('input[name="serviceTime"]').val(time);
-            $pamentForm.find('input[name="serviceGenderPreferred"]').val(gender);
-            $pamentForm.find('input[name="serviceQuantity"]').val(quantity);
-            $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
-            $pamentForm.find('button').prop('disabled', false);
-            $pamentForm.find('button').removeClass('disabled');
-            $pamentForm.find('div.alert-danger').css('display', 'none');
-            $pamentForm.find('span.checkoutAlertDanger').text('');
-            //setup summary
-            var $summary = $this.find('div.mp-checkout-summary');
-            $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')')
-            var $liList = $summary.find('ul li');
-            var index = 0;
-            $liList.eq(index++).text(title);
-            $liList.eq(index++).text('Quantity : ' + quantity);
-            $liList.eq(index++).text('Date : ' + date);
-            $liList.eq(index++).text('Time : ' + time);
-            $liList.eq(index++).text('Gender Preferred : ' + gender);
-            $liList.eq(index++).text('Coupon : ' + coupon);
-            
+            var fromPageId = $parent.find('div.mp-pageId').text().trim();
+            if (fromPageId === 'panda_massageDetails') 
+                massageDetailPageAsParent($this, $parent);
+            if (fromPageId === 'panda_gift') 
+                massageGiftPageAsParent($this, $parent);
         },
         afterResponse: function(pageId){
             $('#payment-form').validator().on('submit', function(e){
@@ -237,61 +291,155 @@ var checkoutPage = (function(){
                     return false;
                 }
             });
-            
+            $('#panda_checkout').click(function(e){
+				var $realElement = $(e.target);
+				if($realElement.hasClass('mp-returnInfo')||$realElement.hasClass('popover'))
+				   return ; 
+				var $openPopover = $('div[id^="popover"]');
+				if($openPopover.length>0)
+				{
+					var $returnInfo = $(this).find('div.mp-returnInfoDiv');
+					$openPopover.each(function(){		
+						var popoverId = $(this).attr('id');
+						$returnInfo.find('span[aria-describedby="'+popoverId+'"]').click();
+						
+					});
+				}
+			});
             $('.mp-returnInfo').popover();
-			$('.mp-checkout-mobileTab').find('button.mp-toOrder').addClass('active');
-			$('.mp-toOrder').click(function(){
-				$('.mp-checkout-mobileTab').find('button.mp-toShipping').removeClass('active');
-				$('.mp-checkout-mobileTab').find('button.mp-toOrder').addClass('active');
-				var $sectionRight = $('#payment-form').find('.mp-checkoutSection-right');
-				var $sectionLeft = $('#payment-form').find('.mp-checkoutSection-left');
-				if($sectionRight.hasClass('mp-smallScreenHide')){
-					$sectionLeft.addClass('mp-smallScreenHide');
-					$sectionRight.removeClass('mp-smallScreenHide');		
-				};	
-					
-				 window.scrollTo(0, 0);			
-			});
-			$('.mp-toShipping').click(function(){
-				$('.mp-checkout-mobileTab').find('button.mp-toShipping').addClass('active');
-				$('.mp-checkout-mobileTab').find('button.mp-toOrder').removeClass('active');
-				var $sectionRight = $('#payment-form').find('.mp-checkoutSection-right');
-				var $sectionLeft = $('#payment-form').find('.mp-checkoutSection-left');
-				if($sectionLeft.hasClass('mp-smallScreenHide')){
-					$sectionLeft.removeClass('mp-smallScreenHide');
-					$sectionRight.addClass('mp-smallScreenHide');
-				};
-
-				 window.scrollTo(0, 0);
-			});
+            $('.mp-checkout-mobileTab').find('button.mp-toOrder').addClass('active');
+            $('.mp-toOrder').click(function(){
+                $('.mp-checkout-mobileTab').find('button.mp-toShipping').removeClass('active');
+                $('.mp-checkout-mobileTab').find('button.mp-toOrder').addClass('active');
+                var $sectionRight = $('#payment-form').find('.mp-checkoutSection-right');
+                var $sectionLeft = $('#payment-form').find('.mp-checkoutSection-left');
+                if ($sectionRight.hasClass('mp-smallScreenHide')) {
+                    $sectionLeft.addClass('mp-smallScreenHide');
+                    $sectionRight.removeClass('mp-smallScreenHide');
+                };
+                
+                window.scrollTo(0, 0);
+            });
+            $('.mp-toShipping').click(function(){
+                $('.mp-checkout-mobileTab').find('button.mp-toShipping').addClass('active');
+                $('.mp-checkout-mobileTab').find('button.mp-toOrder').removeClass('active');
+                var $sectionRight = $('#payment-form').find('.mp-checkoutSection-right');
+                var $sectionLeft = $('#payment-form').find('.mp-checkoutSection-left');
+                if ($sectionLeft.hasClass('mp-smallScreenHide')) {
+                    $sectionLeft.removeClass('mp-smallScreenHide');
+                    $sectionRight.addClass('mp-smallScreenHide');
+                };
+                
+                window.scrollTo(0, 0);
+            });
             // do not need this because there is no billing address            
             //            $('.mp-useBilling').on('change', function(){
             //                var checkbox = $(this).find('input[type="checkbox"]');
             //               if (checkbox.prop("checked")) 
             //                    useBilling();
             //            })
+        }
+    };
+    return publicObj;
+}());
+
+var massageGiftPage = (function(){
+    // beforeShow and afterShow will call every time when page showup
+    // afterResponse only execute once when page load. afterResponse execute before beforeShow.
+    //private function
+    function processSelection(e){
+        var value = $(this).text();
+        var $parentDiv = $(this).closest('div.mp-massageDetails-input');
+        $parentDiv.find('input').val(value);
+        $parentDiv.find('button').html(value + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">');
+        var $massageDetailsPanel = $(this).closest('.mp-massageDetails-panel');
+        var massageLength = $massageDetailsPanel.find('input[name="massageDetailsLength"]').val();
+        var massageType = $massageDetailsPanel.find('input[name="massageDetailsType"]').val();
+        var massageMoney = '';
+        if (massageLength && massageType) {
+            if (massageType === 'Individual') {
+                if (massageLength === '1hour') {
+                    massageMoney = '$79';
+                    $massageDetailsPanel.find('input[name="detailsFeeType"]').val(1);
+                }
+                else 
+                    if (massageLength === '1.5hour') {
+                        massageMoney = '$109';
+                        $massageDetailsPanel.find('input[name="detailsFeeType"]').val(3);
+                    }
+            }
+            else 
+                if (massageType === 'Couple') {
+                    if (massageLength === '1hour') {
+                        massageMoney = '$149';
+                        $massageDetailsPanel.find('input[name="detailsFeeType"]').val(5);
+                    }
+                    else 
+                        if (massageLength === '1.5hour') {
+                            massageMoney = '$199';
+                            $massageDetailsPanel.find('input[name="detailsFeeType"]').val(7);
+                        }
+                }
+            
+            var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
+            $massageDetailsPanel.find('input[name="detailsAmount"]').val(massageMoney.replace(/[^\d.-]/g, ''));
+            var detailsAmount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
+            if (quantity) {
+                var totalAmount = detailsAmount * quantity;
+                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' + totalAmount);
+            }
+            else 
+                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+ massageMoney);
+        }
+        
+        
+        e.preventDefault();
+    };
+    
+    var publicObj = {
+        beforeShow: function(parent){
+            var $this = $(this);
+            $this.find('input').val('');
+            var $massageDetailsPanel = $this.find('.mp-massageDetails-panel');
+            $massageDetailsPanel.find('.mp-massageDetails-titlePrice').text('$79.00 - $199.00');
+            $massageDetailsPanel.find('#mp-massageDetails-panelAlert').hide();
+            $massageDetailsPanel.find('button.mp-massageTypeSelection').html('Massage Type<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
+            $massageDetailsPanel.find('button.mp-massageLengthSelection').html('Massage Length<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
         },
-        validate: function($this){
+        afterResponse: function(pageId){
+            var $this = $('#' + pageId);
+            $this.find('input[name="quantity"]').change(function(){
+				 var $massageDetailsPanel = $(this).closest('.mp-massageDetails-panel');
+                var detailsAmount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
+                if (detailsAmount) {
+					if($(this).val())
+					{
+					  var totalAmount = parseInt($(this).val()) * detailsAmount;
+                      $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' + totalAmount);
+					}
+					else
+					 $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' +detailsAmount);
+
+                }
+            });
+            var $massageDetailsSelectionList = $this.find('.mp-massageDetailsSelectionList');
+            $massageDetailsSelectionList.on("click", "a", processSelection);
+        },
+        checkoutPageValidate: function($this){
             var $massageDetailsForm = $this.closest('.mp-massageDetails-form');
-            var date = $massageDetailsForm.find('input[name="massageDetailsDate"]').val();
-            var time = $massageDetailsForm.find('input[name="massageDetailsTime"]').val();
-            var gender = $massageDetailsForm.find('input[name="genderPreferred"]').val();
+            var massageLength = $massageDetailsForm.find('input[name="massageDetailsLength"]').val();
+            var massageType = $massageDetailsForm.find('input[name="massageDetailsType"]').val();
             var quantity = $massageDetailsForm.find('input[name="quantity"]').val();
             quantity = parseInt(quantity);
             var $panelAlert = $massageDetailsForm.find('#mp-massageDetails-panelAlert');
             $panelAlert.css('display', 'none');
-            if (!date) {
-                $panelAlert.text('Please select date !');
+            if (!massageType) {
+                $panelAlert.text('Please select massage type !');
                 $panelAlert.css('display', 'block');
                 return false;
             };
-            if (!time) {
-                $panelAlert.text('Please select time !');
-                $panelAlert.css('display', 'block');
-                return false;
-            };
-            if (!gender) {
-                $panelAlert.text('Please select genderPreferred !');
+            if (!massageLength) {
+                $panelAlert.text('Please select massage length !');
                 $panelAlert.css('display', 'block');
                 return false;
             };
@@ -304,9 +452,9 @@ var checkoutPage = (function(){
         }
         
     };
+    
     return publicObj;
 }());
-
 
 var massageDetailsPage = (function(){
     //private function
@@ -342,12 +490,13 @@ var massageDetailsPage = (function(){
             var massageFeeType = $parent.find('input[name="panda-massageFeeType"]').val();
             var massageImage = $parent.find('.mp-massageTypePreview-image').attr('src');
             var $massageDetailsPanel = $this.find('.mp-massageDetails-panel');
+            $massageDetailsPanel.find('#mp-massageDetails-panelAlert').hide();
             $massageDetailsPanel.find('p.mp-massageDetails-description').hide();
             $massageDetailsPanel.find('p[data-massageType="' + massageType + '"]').show();
             $this.find('.mp-massageDetails-image').attr('src', massageImage);
             $this.find('.mp-massageDetails-title').text(massageName + ' ' + massagePrice);
             $this.find('li.mp-currentDetailsPage').text(massageName + ' ' + massagePrice);
-            $massageDetailsPanel.find('div.mp-detailsAmount').text(massagePrice.replace(/[^\d.-]/g, ''));
+            $massageDetailsPanel.find('input[name="detailsAmount"]').val(massagePrice.replace(/[^\d.-]/g, ''));
             $massageDetailsPanel.find('input[name="detailsFeeType"]').val(massageFeeType);
             $this.find('button.massageDetailsTime').html('Select Time<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
             $this.find('button.genderPreferred').html('Gender Preferred<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
@@ -365,6 +514,37 @@ var massageDetailsPage = (function(){
             setupTimeDropdown($this.find('#massageDetails_timeList'));
             var $genderPreferredList = $this.find('#massageDetails_genderPreferredList');
             $genderPreferredList.on("click", "a", processSelection);
+        },
+        checkoutPageValidate: function($this){
+            var $massageDetailsForm = $this.closest('.mp-massageDetails-form');
+            var date = $massageDetailsForm.find('input[name="massageDetailsDate"]').val();
+            var time = $massageDetailsForm.find('input[name="massageDetailsTime"]').val();
+            var gender = $massageDetailsForm.find('input[name="genderPreferred"]').val();
+            var quantity = $massageDetailsForm.find('input[name="quantity"]').val();
+            quantity = parseInt(quantity);
+            var $panelAlert = $massageDetailsForm.find('#mp-massageDetails-panelAlert');
+            $panelAlert.css('display', 'none');
+            if (!date) {
+                $panelAlert.text('Please select date !');
+                $panelAlert.css('display', 'block');
+                return false;
+            };
+            if (!time) {
+                $panelAlert.text('Please select time !');
+                $panelAlert.css('display', 'block');
+                return false;
+            };
+            if (!gender) {
+                $panelAlert.text('Please select genderPreferred !');
+                $panelAlert.css('display', 'block');
+                return false;
+            };
+            if (!quantity) {
+                $panelAlert.text('Please enter quantity !');
+                $panelAlert.css('display', 'block');
+                return false;
+            };
+            return true;
         }
         
     };
@@ -492,11 +672,14 @@ var pageController = {
         $pageHeaders.on('click', function(e){
             var $this = $(this);
             var clickPageId = $this.attr(headerAttr.mpPageId);
+            var activePageId = sessionStorage.getItem("mp-activePage");
+            var oldPageControllerName = $('#' + activePageId).attr(headerAttr.mpController);
             var newPageControllerName = $this.attr(headerAttr.mpController);
-            if (window[newPageControllerName]) {
-                var newPageController = window[newPageControllerName];
-                if (typeof(newPageController) === 'object' && typeof(newPageController.validate) === 'function') {
-                    var result = newPageController.validate($this);
+            var newPageValidateMethodName = newPageControllerName + 'Validate';
+            if (window[oldPageControllerName]) {
+                var oldPageController = window[oldPageControllerName];
+                if (typeof(oldPageController) === 'object' && typeof(oldPageController[newPageValidateMethodName]) === 'function') {
+                    var result = oldPageController[newPageValidateMethodName]($this);
                     if (!result) 
                         return false;
                 }
@@ -696,9 +879,9 @@ function pandaPhoneInit(){
         classie.toggle(footer, 'cbp-spmenu-push-toright');
         classie.toggle(menuLeft, 'cbp-spmenu-open');
     };
-	$('#mp-leftSideNav').on('click',function(){
-		$('#mp-showLeftPush').click();
-	});
+    $('#mp-leftSideNav').on('click', function(){
+        $('#mp-showLeftPush').click();
+    });
     
 }
 
@@ -715,8 +898,8 @@ $(function(){
         sessionStorage.setItem('mp-defualtSetting', JSON.stringify(defualtSetting));
         sessionStorage.setItem('pandaRefresh', true);
     });
- 
-	pandaPhoneInit();
+    
+    pandaPhoneInit();
     
     pandaInit();
     
