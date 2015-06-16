@@ -188,6 +188,12 @@ overflow: hidden;
 	width:100%;
 }
 
+.mp-massageDetails-panel {
+   	height: 1000px;
+    margin-bottom: 0px;
+}
+
+
 .mp-massageDetails-panel .mp-massageDetails-title, .mp-massageDetails-panel .mp-massageDetails-titlePrice {
  color: #333;
 background-color: #F5F5F5;
