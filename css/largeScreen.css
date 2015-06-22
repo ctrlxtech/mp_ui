@@ -217,6 +217,28 @@ width: 80%;
 	margin-bottom:20px
 }
 /**end checkout page**/
+/**start contactus**/
+.mp-contactUsForm{
+width: 36%;
+margin: 20px auto;
+text-align: center;
+	
+}
+.mp-contactUsSubmit{
+min-width: 200px;
+margin: 10px auto;
+height: 50px;
+width: 100%;
+}
+.mp-contactUsSubmit .btn{
+width: 230px;
+margin: 0px auto;
+text-align: center;
+height: 50px;
+font-size: 18px;
+}
+/** end contactus **/
 
 }
+
 

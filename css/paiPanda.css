@@ -67,11 +67,51 @@
 }
 
 #panda_about {
-    margin: 0px auto;
+  margin: 0px auto;
 width: 90%;
 font-size: 200%;
 }
 
+.mp-socialLink {
+  width: 20px;
+  height: 23px;
+  margin: 0 0 0 15px;
+   display: inline-block;
+   cursor: pointer;
+  vertical-align: top;
+}
+
+.mp-socialLink-facebook{
+	  background: url(../image/footer_socialIcons.png) no-repeat 0px 0px;
+}
+.mp-socialLink-facebook:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat 0px -24px;
+}
+.mp-socialLink-twitter{
+	  background: url(../image/footer_socialIcons.png) no-repeat -71px 0px;
+}
+.mp-socialLink-twitter:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -71px -24px;
+}
+.mp-socialLink-plus{
+	background: url(../image/footer_socialIcons.png) no-repeat -322px 0px;
+}
+.mp-socialLink-plus:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -322px -24px;
+}
+.mp-socialLink-pinterest{
+	background: url(../image/footer_socialIcons.png) no-repeat -214px 0px;
+}
+.mp-socialLink-pinterest:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -214px -24px;
+}
+.mp-socialLink-mail{
+	 background: url(../image/footer_socialIcons.png) no-repeat -353px 0px;
+}
+.mp-socialLink-mail:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -353px -24px;
+}
+ 
 .mp-tableContainer{
 	width:70%
 	margin: 20px auto;

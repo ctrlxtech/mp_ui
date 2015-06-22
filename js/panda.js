@@ -63,7 +63,7 @@ var pandaAjax = {
         if (!returnDataType) 
             returnDataType = 'json';
         if (!sendDataType) 
-            sendDataType = 'application/json; charset=UTF-8'
+            sendDataType = 'application/json; charset=UTF-8';
         var csrfToken = $.cookie('csrftoken');
         $.ajax({
             type: 'POST',
@@ -81,7 +81,6 @@ var pandaAjax = {
         }).fail(function(jqXHR, textStatus){
             pandaAjax.fail(jqXHR, textStatus);
         });
-        ;
     }
 };
 
@@ -95,6 +94,45 @@ var pandaHelpCenterPage = (function(){
     };
     return publicObj;
 }());
+
+var pandaContactUsPage = (function(){
+	 function afterSubmit(data){
+        //sever return obj: example : {status : true}
+        var returnObj = data;
+        var $form =  $('#panda_contactUs').find('.mp-contactUsForm');
+        $form.find('input').val('');
+		 $form.find('textarea').val('');
+    };
+	
+    var publicObj = {
+        afterResponse: function(pageId){
+               $('#panda_contactUs').find('.mp-contactUsForm').on('submit', function(e){
+                var $form = $(this);
+             	var serverObj = {};
+		        var $serverFieldList = $form.find('input[data-serverField="true"]');
+		        for (var i = 0; i < $serverFieldList.length; i++) {
+		            var $serverField = $($serverFieldList[i]);
+		            var fieldKey = $serverField.attr('name');
+		            var fieldValue = $serverField.val();
+		            serverObj[fieldKey] = fieldValue;
+		        }
+		        //TODO need use server side path for panda contactUS!!!
+		        var url = '';
+		        pandaAjax.post(url, serverObj, afterSubmit);
+            });
+        }
+    };
+    return publicObj;
+}());
+
+var pandaUtil = {
+	getParameterByName : function (name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+   }
+}
 
 var checkoutPage = (function(){
     //private function
@@ -202,7 +240,7 @@ var checkoutPage = (function(){
         $pamentForm.find('span.checkoutAlertDanger').text('');
         //setup summary
         var $summary = $this.find('div.mp-checkout-summary');
-        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')')
+        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')');
         var liListString = '<li class="list-group-item  mp-summary-title"></li>' +
         '<li class="list-group-item  mp-summary-quantity"></li>' +
         '<li class="list-group-item  mp-summary-date"></li>' +
@@ -210,7 +248,7 @@ var checkoutPage = (function(){
         '<li class="list-group-item  mp-summary-genderPrefer"></li>' +
         '<li class="list-group-item  mp-summary-coupon"></li>';
         $summary.find('ul').html(liListString);
-        var $liList = $summary.find('ul li')
+        var $liList = $summary.find('ul li');
         var index = 0;
         $liList.eq(index++).text(title);
         $liList.eq(index++).text('Quantity : ' + quantity);
@@ -246,14 +284,14 @@ var checkoutPage = (function(){
         
         //setup summary
         var $summary = $this.find('div.mp-checkout-summary');
-        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')')
+        $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')');
         var liListString = '<li class="list-group-item  mp-summary-title"></li>' +
         '<li class="list-group-item  mp-summary-quantity"></li>' +
         '<li class="list-group-item  mp-summary-massageType"></li>' +
         '<li class="list-group-item  mp-summary-massageLength"></li>' +
         '<li class="list-group-item  mp-summary-coupon"></li>';
         $summary.find('ul').html(liListString);
-        var $liList = $summary.find('ul li')
+        var $liList = $summary.find('ul li');
         var index = 0;
         $liList.eq(index++).text(title);
         $liList.eq(index++).text('Quantity : ' + quantity);
@@ -291,21 +329,35 @@ var checkoutPage = (function(){
                     return false;
                 }
             });
+            
+            $('#panda_checkout').find('.mp-shippingInfo').on('click', function(e){
+                var $returnPolicy = $('#panda_checkout').find('.mp-returnPolicy');
+                if ($returnPolicy.attr('aria-describedby')) {
+                    $returnPolicy.popover('hide');
+					return false;
+                }
+            });
+            $('#panda_checkout').find('.mp-returnPolicy').on('click',  function(e){
+                 var $shippingInfo = $('#panda_checkout').find('.mp-shippingInfo');
+                if ($shippingInfo.attr('aria-describedby')) {
+                    $shippingInfo.popover('hide');
+					return false;
+                }
+            });
             $('#panda_checkout').click(function(e){
-				var $realElement = $(e.target);
-				if($realElement.hasClass('mp-returnInfo')||$realElement.hasClass('popover'))
-				   return ; 
-				var $openPopover = $('div[id^="popover"]');
-				if($openPopover.length>0)
-				{
-					var $returnInfo = $(this).find('div.mp-returnInfoDiv');
-					$openPopover.each(function(){		
-						var popoverId = $(this).attr('id');
-						$returnInfo.find('span[aria-describedby="'+popoverId+'"]').click();
-						
-					});
-				}
-			});
+                var $realElement = $(e.target);
+                if ($realElement.hasClass('popover') || $realElement.hasClass('mp-returnInfo')) 
+                    return false;
+                var $openPopover = $('div[id^="popover"]');
+                if ($openPopover.length > 0) {
+                    var $returnInfo = $(this).find('div.mp-returnInfoDiv');
+                    $openPopover.each(function(){
+                        var popoverId = $(this).attr('id');
+                        $returnInfo.find('span[aria-describedby="' + popoverId + '"]').click();
+                        
+                    });
+                }
+            });
             $('.mp-returnInfo').popover();
             $('.mp-checkout-mobileTab').find('button.mp-toOrder').addClass('active');
             $('.mp-toOrder').click(function(){
@@ -386,10 +438,10 @@ var massageGiftPage = (function(){
             var detailsAmount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
             if (quantity) {
                 var totalAmount = detailsAmount * quantity;
-                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' + totalAmount);
+                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : ' + '$' + totalAmount);
             }
             else 
-                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+ massageMoney);
+                $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : ' + massageMoney);
         }
         
         
@@ -409,17 +461,16 @@ var massageGiftPage = (function(){
         afterResponse: function(pageId){
             var $this = $('#' + pageId);
             $this.find('input[name="quantity"]').change(function(){
-				 var $massageDetailsPanel = $(this).closest('.mp-massageDetails-panel');
+                var $massageDetailsPanel = $(this).closest('.mp-massageDetails-panel');
                 var detailsAmount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
                 if (detailsAmount) {
-					if($(this).val())
-					{
-					  var totalAmount = parseInt($(this).val()) * detailsAmount;
-                      $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' + totalAmount);
-					}
-					else
-					 $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : '+'$' +detailsAmount);
-
+                    if ($(this).val()) {
+                        var totalAmount = parseInt($(this).val()) * detailsAmount;
+                        $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : ' + '$' + totalAmount);
+                    }
+                    else 
+                        $massageDetailsPanel.find('div.mp-massageDetails-titlePrice').text('Subtotal : ' + '$' + detailsAmount);
+                    
                 }
             });
             var $massageDetailsSelectionList = $this.find('.mp-massageDetailsSelectionList');
@@ -462,7 +513,7 @@ var massageDetailsPage = (function(){
         var value = $(this).text();
         var $parentDiv = $(this).closest('div.mp-massageDetails-input');
         $parentDiv.find('input').val(value);
-        $parentDiv.find('button').html(value + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">')
+        $parentDiv.find('button').html(value + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">');
         e.preventDefault();
     };
     //private function
@@ -558,8 +609,7 @@ var massageDetailsPage = (function(){
 
 var defualtSetting = {
     appBaseURL: './html/',
-    initActivePage: 'panda_home',
-    loadedPageArray: []
+    initActivePage: 'panda_home'
 };
 
 var pandaPageObj = {};
@@ -588,12 +638,10 @@ var pageController = {
                 continue;
             if (pandaPageObj[pageId].mpLoaded) 
                 continue;
-            if (pandaPageObj[pageId].mpShow) 
-                continue;
             
             // only	process header has mpPageId.
             if (pageId) {
-                if (defualtSetting.loadedPageArray.indexOf(pageId) == -1 && $header.attr(headerAttr.mpPageType) === 'default') {
+                if ($('#'+pageId).length === 0 && $header.attr(headerAttr.mpPageType) === 'preLoad') {
                     //page has not been load for sure
                     pageController.load($header);
                 }
@@ -614,15 +662,17 @@ var pageController = {
         if (window[mpControllerName]) 
             mpController = window[mpControllerName];
         //only load pageType is default
-        if ($header.attr(headerAttr.mpPageType) === 'default' || forceLoad === 'true') {
+        if ($header.attr(headerAttr.mpPageType) === 'preLoad' || forceLoad === 'true') {
             var getURL = defualtSetting.appBaseURL + mpNewPageId + '.html';
             pandaAjax.get(getURL, undefined, function(data){
                 console.log(mpNewPageId + ' page load success ! ');
                 pandaPageObj[mpNewPageId].mpLoaded = true;
-                defualtSetting.loadedPageArray.push(mpNewPageId);
                 $('#mp-mainContent').append(data);
-                //call afterResponse
-                if (typeof(mpController) === 'object' && typeof(mpController.afterResponse) === 'function') {
+                
+				//setup child page
+                pageController.setup(mpNewPageId);
+               //call afterResponse
+			    if (typeof(mpController) === 'object' && typeof(mpController.afterResponse) === 'function') {
                     mpController.afterResponse(mpNewPageId);
                 }
                 //this callBack only use for framework. 
@@ -649,20 +699,19 @@ var pageController = {
             
             if (!tempPageId) 
                 continue;
-            
-            if (headerValidArr.indexOf(tempPageId) == -1 && defualtSetting.loadedPageArray.indexOf(tempPageId) == -1) {
+           
+            if (headerValidArr.indexOf(tempPageId) == -1 &&  $('#'+tempPageId).length ===0) {
                 headerValidArr.push(tempPageId);
                 realHeaderArr.push($header);
             }
             //use other to do lazy loading .use default to do init loading
             if (typeof($header.attr(headerAttr.mpPageType)) === 'undefined') 
-                $header.attr(headerAttr.mpPageType, 'other');
+                $header.attr(headerAttr.mpPageType, 'default');
             
             
             if (typeof(pandaPageObj[tempPageId]) === 'undefined') {
                 pandaPageObj[tempPageId] = {
                     mpLoaded: false,
-                    mpShow: false,
                     mpRefresh: false
                 }
             }
@@ -686,14 +735,8 @@ var pageController = {
             }
             var isAjax = $this.attr(headerAttr.mpAjax);
             if (isAjax !== 'false') {
-                //after refresh need to call afterResponse again
-                if (pandaPageObj[clickPageId].mpRefresh) {
-                    if (typeof(newPageController) === 'object' && typeof(newPageController.afterResponse) === 'function') {
-                        newPageController.afterResponse(clickPageId);
-                    }
-                    pandaPageObj[clickPageId].mpRefresh = false;
-                }
-                if (pandaPageObj[clickPageId].mpLoaded) {
+				var clickPageNum = $('#'+clickPageId).length;
+                if (pandaPageObj[clickPageId].mpLoaded && clickPageNum==1) {
                     pageController.changePage($this);
                 }
                 else {
@@ -708,16 +751,25 @@ var pageController = {
         //call init
         pageController.init(realHeaderArr);
     },
-    changePage: function($this){
+    changePage: function($this,replaceState){
         var newPageId = $this.attr(headerAttr.mpPageId);
         var activePageId = sessionStorage.getItem("mp-activePage");
         if (activePageId !== newPageId) {
-            $('#' + activePageId).hide(function(){
-            
-            });
+			if(activePageId)
+			{
+				 $('#' + activePageId).hide(function(){          
+           		 });
+			}         
             var newPageControllerName = $this.attr(headerAttr.mpController);
             if (window[newPageControllerName]) {
                 var newPageController = window[newPageControllerName];
+				  //after refresh need to call afterResponse again
+                if (pandaPageObj[newPageId].mpRefresh) {
+                    if (typeof(newPageController) === 'object' && typeof(newPageController.afterResponse) === 'function') {
+                        newPageController.afterResponse(newPageId);
+                    }
+                    pandaPageObj[newPageId].mpRefresh = false;
+                }
                 if (typeof(newPageController) === 'object' && typeof(newPageController.beforeShow) === 'function') {
                     newPageController.beforeShow.apply($('#' + newPageId), $this);
                 }
@@ -728,18 +780,14 @@ var pageController = {
                 // Change our States
                 pageStateObj.pageState = pageStateObj.pageState + 1;
                 pageStateObj[pageStateObj.pageState] = newPageId;
-                //setup child page
-                if (!pandaPageObj[newPageId].mpShow) {
-                    pandaPageObj[newPageId].mpShow = true;
-                    pageController.setup($this.attr(headerAttr.mpPageId));
-                }
-                if ($this.attr(headerAttr.mpPageStateType) !== 'replace') {
-                    History.pushState({
+            
+                if ($this.attr(headerAttr.mpPageStateType) === 'replace' || replaceState) {
+                    History.replaceState({
                         state: pageStateObj.pageState
                     }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
                 }
                 else {
-                    History.replaceState({
+					History.pushState({
                         state: pageStateObj.pageState
                     }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
                 }
@@ -788,37 +836,114 @@ var pageBackForward = {
 var pandaInit = function(){
 
     var isRefresh = sessionStorage.getItem('pandaRefresh');
-    
+    var tabName = pandaUtil.getParameterByName('tab');
+	var customizedPageHeader = $('[data-mpPageId="'+tabName+'"]');
+	//check if page has been reload
     if (isRefresh) {
         var oldPageElement = sessionStorage.getItem('mp-pageElement');
         $('#mp-mainContent').html(oldPageElement);
         sessionStorage.removeItem('mp-pageElement');
         var oldPandaPageState = JSON.parse(sessionStorage.getItem('mp-pageState'));
         var oldPandaPageObj = JSON.parse(sessionStorage.getItem('mp-pageObj'));
-        var oldDefualtSetting = JSON.parse(sessionStorage.getItem('mp-defualtSetting'));
         $.extend(pageStateObj, oldPandaPageState);
         $.extend(pandaPageObj, oldPandaPageObj);
-        $.extend(defualtSetting, oldDefualtSetting);
         var lastState = pageStateObj.pageState;
         var lastStatePageId = pageStateObj[lastState];
         //just double check page Id, can be remove later
         var activePageId = sessionStorage.getItem('mp-activePage');
         if (activePageId === lastStatePageId) 
-            console.log("pageId is right !!");
-        pageController.setup();
-        //need to call response to setup
-    
+		{
+			console.log("pageId is right !!");
+		}
+		else
+		{
+			console.log("pageId is wrong !!");
+			console.log("activePageId : "+activePageId);	
+			console.log("lastStatePageId : "+lastStatePageId);
+			//need to recover	
+		}
+
+		 pageController.setup();
+		 //check if tabName is equals to active page. if not, page is not reload by refresh button
+		 //tab name must be manually change by people
+		if(tabName!==activePageId)
+		{
+			//check if tab name is valid. if valid we need to change page.
+			if(customizedPageHeader.length>0)
+			{
+			   var $firstCustomizedPageHeader = customizedPageHeader.first();
+			   var mptabPageNum = $('#'+tabName).length;
+				if(pandaPageObj[tabName].mpLoaded&&mptabPageNum===1)
+				{
+					pageController.changePage($firstCustomizedPageHeader,true);
+				}
+				else
+				{
+					//need load page
+				   var callBack = function(){
+	                        pageController.changePage($(this),true);
+	                }
+	              pageController.load($firstCustomizedPageHeader, callBack, 'true');
+				}
+			}
+			//if tab name is not valid. we need load index page
+			else{
+				// if last time is not index then we change page
+				var homePageDivNum = $('#panda_home').length;
+				 var $firstPandaHome = $('[data-mpPageId="panda_home"]').first();
+				if(homePageDivNum==1)
+				{
+				    if(activePageId !== defualtSetting.initActivePage)
+					{				
+					  pageController.changePage($firstPandaHome,true);
+					}
+					else
+					{
+						//if last time is index page we just replace it
+						pageStateObj.pageState = pageStateObj.pageState + 1;
+		               pageStateObj[pageStateObj.pageState] = activePageId;
+				        History.replaceState({
+				            state: pageStateObj.pageState
+				        }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
+					}
+				}
+				else{						//need load page
+				   var callBack = function(){
+	                        pageController.changePage($(this),true);
+	                }
+	              pageController.load($firstPandaHome, callBack, 'true');
+				}
+
+
+			}
+		}
+    	sessionStorage.setItem('pandaRefresh', false);
     }
-    else {
-        $('#' + defualtSetting.initActivePage).show();
-        sessionStorage.setItem('mp-activePage', defualtSetting.initActivePage);
-        defualtSetting.loadedPageArray.push(defualtSetting.initActivePage);
-        pandaPageObj[defualtSetting.initActivePage] = {
-            mpLoaded: true,
-            mpShow: true,
-            mpRefresh: false
-        };
-        pageController.setup();
+    else {		
+		if(tabName && customizedPageHeader.length>0 && tabName !== defualtSetting.initActivePage)
+		{			
+	         pandaPageObj[defualtSetting.initActivePage] = {
+	            mpLoaded: true,
+	            mpRefresh: false
+	         };
+	         pageController.setup();
+			  var $firstCustomizedPageHeader = customizedPageHeader.first();
+			   var callBack = function(){
+                        pageController.changePage($(this));
+                }
+              pageController.load($firstCustomizedPageHeader, callBack, 'true');
+		}
+		else
+		{
+			 $('#' + defualtSetting.initActivePage).show();
+	         sessionStorage.setItem('mp-activePage', defualtSetting.initActivePage);
+	         pandaPageObj[defualtSetting.initActivePage] = {
+	            mpLoaded: true,
+	            mpRefresh: false
+	         };
+	         pageController.setup();
+		}
+
     }
     
     History.Adapter.bind(window, 'statechange', function(){ // Note: We are using statechange instead of popstate
@@ -850,20 +975,34 @@ var pandaInit = function(){
     });
     
     if (isRefresh) {
-        // override last page
-        pageStateObj.pageState = pageStateObj.pageState + 1;
-        pageStateObj[pageStateObj.pageState] = activePageId;
-        History.replaceState({
-            state: pageStateObj.pageState
-        }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
+        // do not need to do anything. 
+		if (tabName !== activePageId) {
+	       
+		}
+		 // override last page
+		else{
+			pageStateObj.pageState = pageStateObj.pageState + 1;
+	        pageStateObj[pageStateObj.pageState] = activePageId;
+	        History.replaceState({
+	            state: pageStateObj.pageState
+	        }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
+		}	
+
         
     }
     else {
-        //override home page    
-        pageStateObj[pageStateObj.pageState] = defualtSetting.initActivePage;
-        History.replaceState({
-            state: pageStateObj.pageState
-        }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
+        //override home page  
+		if(tabName && customizedPageHeader.length>0 && tabName !== defualtSetting.initActivePage)
+		{
+			//do not need to do anything for now because we need load other page
+		}
+		else{
+			pageStateObj[pageStateObj.pageState] = defualtSetting.initActivePage;
+	        History.replaceState({
+	            state: pageStateObj.pageState
+	        }, undefined, "?tab=" + pageStateObj[pageStateObj.pageState]);
+		}
+
         
     }
     
@@ -889,19 +1028,21 @@ function pandaPhoneInit(){
 
 $(function(){
     $(window).on('beforeunload', function(){
-        for (var i = 0; i < defualtSetting.loadedPageArray.length; i++) {
-            pandaPageObj[defualtSetting.loadedPageArray[i]].mpRefresh = true;
+        for (var pageId in pandaPageObj) {
+            if (pandaPageObj.hasOwnProperty(pageId)) {
+                if(pandaPageObj[pageId].mpLoaded)
+				{
+					pandaPageObj[pageId].mpRefresh = true;
+				}
+            }
         }
+		
         sessionStorage.setItem('mp-pageElement', $('#mp-mainContent').html());
         sessionStorage.setItem('mp-pageState', JSON.stringify(pageStateObj));
         sessionStorage.setItem('mp-pageObj', JSON.stringify(pandaPageObj));
-        sessionStorage.setItem('mp-defualtSetting', JSON.stringify(defualtSetting));
         sessionStorage.setItem('pandaRefresh', true);
     });
     
     pandaPhoneInit();
-    
     pandaInit();
-    
-    
-})
+});

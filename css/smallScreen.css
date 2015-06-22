@@ -25,6 +25,47 @@
 #mp-navbar{
 	position : fixed !important;
 }
+
+ul.mp-sideBar-socialLink{
+ margin: 0;
+  padding: 20px 0;
+  list-style-type: none;
+}
+
+ul.mp-sideBar-socialLink li{
+display: inline;
+}
+
+.mp-sideBar-socialLink .mp-socialLink-facebook{
+	  background: url(../image/footer_socialIcons.png) no-repeat 0px -45px;
+}
+.mp-sideBar-socialLink .mp-socialLink-facebook:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat 0px -24px;
+}
+.mp-sideBar-socialLink .mp-socialLink-twitter{
+	  background: url(../image/footer_socialIcons.png) no-repeat -71px -45px;
+}
+.mp-sideBar-socialLink .mp-socialLink-twitter:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -71px -24px;
+}
+.mp-sideBar-socialLink .mp-socialLink-plus{
+	background: url(../image/footer_socialIcons.png) no-repeat -322px -45px;
+}
+.mp-sideBar-socialLink .mp-socialLink-plus:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -322px -24px;
+}
+.mp-sideBar-socialLink .mp-socialLink-pinterest{
+	background: url(../image/footer_socialIcons.png) no-repeat -214px -45px;
+}
+.mp-sideBar-socialLink .mp-socialLink-pinterest:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -214px -24px;
+}
+.mp-sideBar-socialLink .mp-socialLink-mail{
+	 background: url(../image/footer_socialIcons.png) no-repeat -353px -45px;
+}
+.mp-sideBar-socialLink  .mp-socialLink-mail:hover {
+  background: url(../image/footer_socialIcons.png) no-repeat -353px -24px;
+}
 /*
 #mp-navbar.cbp-spmenu-push-toright{
 	position : relative !important;
@@ -241,9 +282,7 @@ padding: 10px;
 .mp-paymentForm{
 	top: 0px !important;
 }
-.form-group {
-    min-width: 320px !important;
-}
+
 
 #panda_helpCenter {
   margin: 10px auto;
@@ -268,7 +307,7 @@ padding: 10px;
 .cbp-spmenu {
 	position: fixed;
 }
-.cbp-spmenu a {
+.cbp-spmenu > a {
     font-family: "Oxygen",sans-serif;
     font-size: 1.2em;
     line-height: 26px;
@@ -291,7 +330,7 @@ padding: 10px;
 	top: 0;
 	z-index: 1000;
 }
-.cbp-spmenu-vertical a {
+.cbp-spmenu-vertical> a {
 	border-bottom: 1px solid #969696;
 	padding: 1em;
 }
@@ -327,6 +366,30 @@ padding: 10px;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	transition: all 0.3s ease;
+}
+/*start contactUs */
+.mp-contactUsForm{
+	  width: 98%;
+  margin: 20px auto;
+  text-align: center;
+  margin-top: 50px;
+}
+.form-group.mp-mobileFormGroup{
+	  width: 90%;
+}
+
+.mp-contactUsSubmit{
+min-width: 200px;
+margin: 10px auto;
+height: 50px;
+width: 100%;
+}
+.mp-contactUsSubmit .btn{
+width: 230px;
+margin: 0px auto;
+text-align: center;
+height: 50px;
+font-size: 18px;
 }
 
 

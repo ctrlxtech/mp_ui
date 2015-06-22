@@ -312,8 +312,14 @@ input[type = checkbox] {
 
 .form-group {
     width: 100%;
-    min-width: 320px;
+    min-width: 300px;
     max-width: 500px;
+}
+
+.form-inline .form-group.mp-form-inlineGroup {
+  display:inline;
+  min-width: 160px;
+  max-width: 320px;
 }
 
 .form-control {
@@ -341,8 +347,8 @@ input[type = checkbox] {
 }
 
 .form-control.mp-halfwidth {
-    width: 48%;
-    display: inline;
+   display: inline;
+   width: 46%;
 }
 
 .form-control.mp-halfwidth.mp-paddingFix {
@@ -350,13 +356,13 @@ input[type = checkbox] {
 }
 
 .form-control.mp-smallwidth {
-    width: 30%;
+    width: 29%;
     min-width: 100px;
     display: inline;
 }
 
 .form-control.mp-tinywidth {
-    width: 17%;
+    width: 16%;
     min-width: 30px;
     display: inline;
 }
@@ -373,9 +379,9 @@ input[type = checkbox] {
 }
 
 .form-control.mp-checkoutNote {
-    width: 98%;
+    width: 96%;
     max-width: 450px;
-    min-width: 320px;
+    min-width: 300px;
 }
 
 .mp-checkout-summary .list-group .list-group-item {
@@ -468,23 +474,29 @@ input[type = checkbox] {
 
 /** success **/
 .mp-successIcon {
-    width: 50px;
-    height: 50px;
-    margin-right: 3%;
-    float: left;
+     width: 50px;
+  height: 50px;
+  margin-right: 3%;
+  float: left;
+  margin-top: 3px;
 }
 
 .mp-successInfo {
     font-family: "Oxygen", sans-serif;
-    font-size: 2.4em;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  box-shadow: 0 0 10px rgb(166, 166, 166);
 }
 
-.mp-successTitle {
-    padding-left: 20% !important;
+.panel-heading.mp-successTitle {
+  padding-left: 20% ;
+  height: 60px;
+  line-height: 60px;
+  padding-top: 0px;
+  font-size: 32px;
 }
 
 #panda_success .panel .panel-body {
