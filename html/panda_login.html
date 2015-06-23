@@ -1,12 +1,13 @@
-<div id="panda_login" class="mp-pageContent container-fluid">
-    <div class="panel panel-success mp-successInfo">
-        <!-- Default panel contents -->
-        <div class="panel-heading mp-successTitle">
-            <img class="mp-successIcon" src="./image/success_icon.png"/><span>Your Order have been Processed</span>
-        </div>
-        <div class="panel-body">
-            Thank you for choosing massage panda ! We hope you enjoy our service.
-            You will receive confirmation message shortly.
+<div id="panda_login" class="mp-pageContent container-fluid" data-mpController="pandaLoginPage" style="display:none">
+    <div class="login-card">
+        <h1>Log-in</h1>
+        <br/>
+        <form class="mp-loginForm">
+            <input type="text" name="loginUser" placeholder="Username" data-serverField="true" required /><input type="password" name="loginPassword" placeholder="Password" data-serverField="true" required /><input type="submit" name="loginSubmit" class="login login-submit" value="login" />
+        </form>
+        <div class="login-help">
+        	  <a href="" class="mp-pageHeader" data-mpPageId="panda_register" data-mpController="pandaRegisterPage">Register</a>
+            • <a href="#">Forgot Password</a>
         </div>
     </div>
 </div>

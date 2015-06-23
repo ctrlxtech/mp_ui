@@ -95,6 +95,66 @@ var pandaHelpCenterPage = (function(){
     return publicObj;
 }());
 
+var pandaRegisterPage = (function(){
+	 function afterSubmit(data){
+        var returnObj = data;
+        var $form =  $('#panda_register').find('.mp-registerForm');
+        $form.find('input').val('');
+    };
+	
+    var publicObj = {
+        afterResponse: function(pageId){
+               $('#panda_register').find('.mp-registerForm').on('submit', function(e){
+                var $form = $(this);
+             	var serverObj = {};
+		        var $serverFieldList = $form.find('input[data-serverField="true"]');
+		        for (var i = 0; i < $serverFieldList.length; i++) {
+		            var $serverField = $($serverFieldList[i]);
+		            var fieldKey = $serverField.attr('name');
+		            var fieldValue = $serverField.val();
+		            serverObj[fieldKey] = fieldValue;
+		        }
+				var gender = $('#panda_register').find('input[name="registerGender"]:checked').val();
+		        serverObj['registerGender']=gender;
+				//TODO need use server side path for panda register!!!
+		        var url = '';
+		        pandaAjax.post(url, serverObj, afterSubmit);
+				event.preventDefault()
+            });
+        }
+    };
+    return publicObj;
+}());
+
+var pandaLoginPage = (function(){
+	 function afterSubmit(data){
+        var returnObj = data;
+        var $form =  $('#panda_login').find('.mp-loginForm');
+        $form.find('input').val('');
+    };
+	
+    var publicObj = {
+        afterResponse: function(pageId){
+               $('#panda_login').find('.mp-loginForm').on('submit', function(e){
+                var $form = $(this);
+             	var serverObj = {};
+		        var $serverFieldList = $form.find('input[data-serverField="true"]');
+		        for (var i = 0; i < $serverFieldList.length; i++) {
+		            var $serverField = $($serverFieldList[i]);
+		            var fieldKey = $serverField.attr('name');
+		            var fieldValue = $serverField.val();
+		            serverObj[fieldKey] = fieldValue;
+		        }
+		        //TODO need use server side path for panda Login!!!
+		        var url = '';
+		        pandaAjax.post(url, serverObj, afterSubmit);
+				event.preventDefault()
+            });
+        }
+    };
+    return publicObj;
+}());
+
 var pandaContactUsPage = (function(){
 	 function afterSubmit(data){
         //sever return obj: example : {status : true}
@@ -119,6 +179,7 @@ var pandaContactUsPage = (function(){
 		        //TODO need use server side path for panda contactUS!!!
 		        var url = '';
 		        pandaAjax.post(url, serverObj, afterSubmit);
+				event.preventDefault()
             });
         }
     };

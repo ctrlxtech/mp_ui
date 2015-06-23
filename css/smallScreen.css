@@ -1,6 +1,7 @@
 /**
  * @media query for phone
- */ @media screen and (max-width: 1024px) {
+ */ 
+@media screen and (max-width: 1024px) {
 	
 #mp-mainContent{
 	padding: 30px 10px !important;
