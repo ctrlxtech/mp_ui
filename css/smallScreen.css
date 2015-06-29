@@ -265,6 +265,14 @@ padding: 10px;
     margin: 0 auto;
 }
 
+.mp-massageDetails-input.mp-massageDetails-needTable input {
+  display: inline;
+  position: relative;
+  width: 30px;
+  margin-left: 10px;
+
+}
+
 /**end massage details page**/
 /**begin checkout page**/
 #payment-form .mp-checkoutSection{

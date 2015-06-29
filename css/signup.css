@@ -40,6 +40,14 @@ overflow: hidden;
   border-radius: 3px;
 }
 
+#mp-registerForm-panelAlert{
+	  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+   border-radius: 3px;
+}
+
 .signup-card input[type=text]:hover, input[type=password]:hover {
   border: 1px solid #b9b9b9;
   border-top: 1px solid #a0a0a0;
@@ -145,6 +153,14 @@ overflow: hidden;
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
+  border-radius: 3px;
+}
+
+#mp-loginForm-panelAlert{
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
   border-radius: 3px;
 }
 

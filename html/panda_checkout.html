@@ -13,7 +13,7 @@
     </div>
     <div class="mp-paymentForm">
         <form  id="payment-form" class="form-inline">
-            <input type="hidden" name="stripeToken" data-serverField="true"/><input type="hidden" name="amount" data-serverField="true"/><input type="hidden" name="feeType" data-serverField="true"/><input type="hidden" name="serviceDate" data-serverField="true"/><input type="hidden" name="serviceTime" data-serverField="true"/><input type="hidden" name="serviceGenderPreferred" data-serverField="true"/><input type="hidden" name="serviceQuantity" data-serverField="true"/><input type="hidden" name="serviceCoupon" data-serverField="true"/><input type="hidden" name="serviceMassageType" data-serverField="true"/><input type="hidden" name="serviceMassageLength" data-serverField="true"/>
+            <input type="hidden" name="referCode" data-serverField="true"/><input type="hidden" name="serviceNeedTable" data-serverField="true"/><textarea style="display:none" name="serviceParkingInfo" data-serverField="true" value=""/><input type="hidden" name="stripeToken" data-serverField="true"/><input type="hidden" name="amount" data-serverField="true"/><input type="hidden" name="feeType" data-serverField="true"/><input type="hidden" name="serviceDate" data-serverField="true"/><input type="hidden" name="serviceTime" data-serverField="true"/><input type="hidden" name="serviceGenderPreferred" data-serverField="true"/><input type="hidden" name="serviceQuantity" data-serverField="true"/><input type="hidden" name="serviceMassageType" data-serverField="true"/><input type="hidden" name="serviceMassageLength" data-serverField="true"/>
             <div class="col-xs-12 col-sm-12 col-md-6 mp-smallScreenPadding">
                 <div class="mp-checkoutSection mp-checkoutSection-left  mp-smallScreenHide">
                     <div class="alert alert-danger mp-checkoutAlertDanger" role="alert" style="display:none">
@@ -79,6 +79,9 @@
                         <h2>Order Summary <span class="mp-summary-amount"></span></h2>
                         <ul class="list-group">
                         </ul>
+                    </div>
+					<div class="form-group">
+                      <input type="text" placeholder="Enter Coupon Code" class="form-control" name="serviceCoupon" data-serverField="true"/>
                     </div>
                     <div class="form-group">
                         <textarea name="checkoutNote" val="" placeholder="Note to Seller (Optional)" class="form-control mp-fieldRequired mp-checkoutNote" rows="3" cols="50" data-serverField="true" />

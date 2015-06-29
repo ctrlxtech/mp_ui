@@ -46,8 +46,13 @@
                         <input type="hidden" name="massageDetailsTime" value=""/>
                         <button type="button" class="btn btn-default dropdown-toggle massageDetailsTime" data-toggle="dropdown" aria-expanded="false">Select Time<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                         </button>
-                        <ul id="massageDetails_timeList" class="dropdown-menu" role="menu">
-                           
+						<!--
+						<div class="mp-timeTableDiv" style="display:none">
+						<table id="massageDetails_timeTable" class="table" >				
+						</table>
+						</div>
+						-->
+						<ul id="massageDetails_timeList" class="dropdown-menu" role="menu">                       
                         </ul>
                     </div>
                     <div class="btn-group mp-massageDetails-input">
@@ -71,12 +76,19 @@
                         </ul>
                     </div>
                   <div class="btn-group mp-massageDetails-input">
-                        <input type="number" class="mp-massageDetails-spinner" placeholder="Select a Quantity" min="1"  name="quantity" />
-						
-                   </div>
+                        <input type="number" class="mp-massageDetails-spinner" placeholder="Select a Quantity" min="1"  name="quantity" />		
+                   </div>			
+				   <div class="mp-massageDetails-textarea">
+                        <textarea name="parkingInfo" val="" placeholder="please provide any additional directions to your location. E.g, “ring Buzzer 32” or “first house on the left, blue door" class="form-control" rows="3" cols="50" />
+                    </div>					
+					<div class="checkbox mp-massageDetails-input mp-massageDetails-needTable">
+  					<input name="needTable" type="checkbox"  checked><label>Need a massage table</label>
+				 </div>
+				   <!--
 				    <div class="btn-group mp-massageDetails-input">              
 						<input placeholder="Please Enter Coupon"  name="coupon" />
                    </div>
+				   -->
 				   <div class="mp-checkout mp-pageHeader" data-mpPageId="panda_checkout" data-mpController="checkoutPage" >
 				    <div class="mp-pageId" style="display:none">panda_massageDetails</div>
 					<button type="button" class="btn btn-success">

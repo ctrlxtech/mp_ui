@@ -100,6 +100,28 @@ var pandaRegisterPage = (function(){
         var returnObj = data;
         var $form =  $('#panda_register').find('.mp-registerForm');
         $form.find('input').val('');
+		$('#panda_register').find('#mp-registerForm-panelAlert').hide();
+		//check login is success or not
+		if(returnObj.success)
+		{
+			//register success
+			var firstName = returnObj.firstName;		
+			var $navigation = $('#mp-navbar').find('.mp-navigation>ul');
+			var navDropdown = $navigation.children('li.dropdown');
+			navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
+			$navigation.children('li.mp-loginHeader').hide();
+			navDropdown.show();
+			//go to home page
+			localStorage.setItem("pandaLogin", 'true');
+			localStorage.setItem("pandaLoginName", firstName);
+			 $('#panda_login').find('.mp-loginSuccess').click();
+		}
+		else{
+			//register fail
+			var $panelAlert = $('#panda_register').find('#mp-registerForm-panelAlert');
+			$panelAlert.text(returnObj.errorMsg);
+			$panelAlert.show();
+		}
     };
 	
     var publicObj = {
@@ -117,7 +139,7 @@ var pandaRegisterPage = (function(){
 				var gender = $('#panda_register').find('input[name="registerGender"]:checked').val();
 		        serverObj['registerGender']=gender;
 				//TODO need use server side path for panda register!!!
-		        var url = '';
+		        var url = '';				
 		        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
@@ -131,6 +153,26 @@ var pandaLoginPage = (function(){
         var returnObj = data;
         var $form =  $('#panda_login').find('.mp-loginForm');
         $form.find('input').val('');
+		$('#panda_login').find('#mp-loginForm-panelAlert').hide();
+		//check login is success or not
+		if(returnObj.success)
+		{
+			//login success
+			var firstName = returnObj.firstName;		
+			var $navigation = $('#mp-navbar').find('.mp-navigation>ul');
+			var navDropdown = $navigation.children('li.dropdown');
+			navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
+			$navigation.children('li.mp-loginHeader').hide();
+			navDropdown.show();
+			//go to home page
+			localStorage.setItem("pandaLogin", 'true');
+			localStorage.setItem("pandaLoginName", firstName);
+			 $('#panda_login').find('.mp-loginSuccess').click();
+		}
+		else{
+			//login fail
+			$('#panda_login').find('#mp-loginForm-panelAlert').show();
+		}
     };
 	
     var publicObj = {
@@ -150,6 +192,24 @@ var pandaLoginPage = (function(){
 		        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
+        }
+    };
+    return publicObj;
+}());
+
+var pandaLogoutPage = (function(){
+	 var publicObj = {
+        beforeShow: function(parent){
+            var $this = $(this);
+            var $parent = $(parent);
+			var $navigation = $('#mp-navbar').find('.mp-navigation>ul');
+			var navDropdown = $navigation.children('li.dropdown');
+			navDropdown.children('a.dropdown-toggle').empty();
+			navDropdown.hide();
+			$navigation.children('li.mp-loginHeader').show();
+			//go to home page
+			localStorage.setItem("pandaLogin", 'false');
+			localStorage.setItem("pandaLoginName", '');
         }
     };
     return publicObj;
@@ -192,6 +252,19 @@ var pandaUtil = {
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+   },
+   getDateString : function(dateObj){            	
+				var dd = dateObj.getDate();
+				var mm = dateObj.getMonth()+1; //January is 0!
+				var yyyy = dateObj.getFullYear();				
+				if(dd<10) {
+				    dd='0'+dd
+				} 				
+				if(mm<10) {
+				    mm='0'+mm
+				} 
+				var dateString = mm+'/'+dd+'/'+yyyy;
+			return	dateString;
    }
 }
 
@@ -222,7 +295,7 @@ var checkoutPage = (function(){
     //private function
     function submitForm($form){
         var serverObj = {};
-        var $serverFieldList = $form.find('input[data-serverField="true"]');
+        var $serverFieldList = $form.find('[data-serverField="true"]');
         for (var i = 0; i < $serverFieldList.length; i++) {
             var $serverField = $($serverFieldList[i]);
             var fieldKey = $serverField.attr('name');
@@ -282,7 +355,9 @@ var checkoutPage = (function(){
         var time = $massageDetailsPanel.find('input[name="massageDetailsTime"]').val();
         var gender = $massageDetailsPanel.find('input[name="genderPreferred"]').val();
         var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
-        var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
+		var $needTable = $massageDetailsPanel.find('input[name="needTable"]');
+		var parkingInfo = $massageDetailsPanel.find('textarea[name="parkingInfo"]').val();
+      //  var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
         var feeType = $massageDetailsPanel.find('input[name="detailsFeeType"]').val();
         var amount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
         var totalAmount = amount * parseInt(quantity);
@@ -294,7 +369,22 @@ var checkoutPage = (function(){
         $pamentForm.find('input[name="serviceTime"]').val(time);
         $pamentForm.find('input[name="serviceGenderPreferred"]').val(gender);
         $pamentForm.find('input[name="serviceQuantity"]').val(quantity);
-        $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
+		$pamentForm.find('textarea[name="serviceParkingInfo"]').val(parkingInfo);
+		var referCode = localStorage.getItem("referCode");
+		if(referCode)
+		{
+		   $pamentForm.find('input[name="referCode"]').val(referCode);	
+		};
+			
+		if ($needTable.is(":checked"))
+		{
+             $pamentForm.find('input[name="serviceNeedTable"]').val('yes');
+	    }
+		else
+		{
+			$pamentForm.find('input[name="serviceNeedTable"]').val('no');
+		};
+       // $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
         $pamentForm.find('button').prop('disabled', false);
         $pamentForm.find('button').removeClass('disabled');
         $pamentForm.find('div.alert-danger').css('display', 'none');
@@ -306,8 +396,8 @@ var checkoutPage = (function(){
         '<li class="list-group-item  mp-summary-quantity"></li>' +
         '<li class="list-group-item  mp-summary-date"></li>' +
         '<li class="list-group-item  mp-summary-time"></li>' +
-        '<li class="list-group-item  mp-summary-genderPrefer"></li>' +
-        '<li class="list-group-item  mp-summary-coupon"></li>';
+        '<li class="list-group-item  mp-summary-genderPrefer"></li>' ;
+       // '<li class="list-group-item  mp-summary-coupon"></li>';
         $summary.find('ul').html(liListString);
         var $liList = $summary.find('ul li');
         var index = 0;
@@ -316,7 +406,7 @@ var checkoutPage = (function(){
         $liList.eq(index++).text('Date : ' + date);
         $liList.eq(index++).text('Time : ' + time);
         $liList.eq(index++).text('Gender Preferred : ' + gender);
-        $liList.eq(index++).text('Coupon : ' + coupon);
+      //  $liList.eq(index++).text('Coupon : ' + coupon);
     };
     
     function massageGiftPageAsParent($this, $parent){
@@ -325,7 +415,7 @@ var checkoutPage = (function(){
         var massageType = $massageDetailsPanel.find('input[name="massageDetailsType"]').val();
         var massageLength = $massageDetailsPanel.find('input[name="massageDetailsLength"]').val();
         var quantity = $massageDetailsPanel.find('input[name="quantity"]').val();
-        var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
+       // var coupon = $massageDetailsPanel.find('input[name="coupon"]').val();
         var feeType = $massageDetailsPanel.find('input[name="detailsFeeType"]').val();
         var amount = parseInt($massageDetailsPanel.find('input[name="detailsAmount"]').val());
         var totalAmount = amount * parseInt(quantity);
@@ -335,22 +425,27 @@ var checkoutPage = (function(){
         $pamentForm.find('input[name="amount"]').val(totalAmount);
         $pamentForm.find('input[name="feeType"]').val(feeType);
         $pamentForm.find('input[name="serviceQuantity"]').val(quantity);
-        $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
+       // $pamentForm.find('input[name="serviceCoupon"]').val(coupon);
         $pamentForm.find('input[name="serviceMassageType"]').val(massageType);
         $pamentForm.find('input[name="serviceMassageLength"]').val(massageLength);
+	    var referCode = localStorage.getItem("referCode");
+		if(referCode)
+		{
+		   $pamentForm.find('input[name="referCode"]').val(referCode);	
+		};
         $pamentForm.find('button').prop('disabled', false);
         $pamentForm.find('button').removeClass('disabled');
         $pamentForm.find('div.alert-danger').css('display', 'none');
-        $pamentForm.find('span.checkoutAlertDanger').text('');
-        
+        $pamentForm.find('span.checkoutAlertDanger').text('');      
+	
         //setup summary
         var $summary = $this.find('div.mp-checkout-summary');
         $summary.find('span.mp-summary-amount').text('(Subtotal : $' + totalAmount + ')');
         var liListString = '<li class="list-group-item  mp-summary-title"></li>' +
         '<li class="list-group-item  mp-summary-quantity"></li>' +
         '<li class="list-group-item  mp-summary-massageType"></li>' +
-        '<li class="list-group-item  mp-summary-massageLength"></li>' +
-        '<li class="list-group-item  mp-summary-coupon"></li>';
+        '<li class="list-group-item  mp-summary-massageLength"></li>';
+       // '<li class="list-group-item  mp-summary-coupon"></li>';
         $summary.find('ul').html(liListString);
         var $liList = $summary.find('ul li');
         var index = 0;
@@ -358,13 +453,14 @@ var checkoutPage = (function(){
         $liList.eq(index++).text('Quantity : ' + quantity);
         $liList.eq(index++).text('Massage Type : ' + massageType);
         $liList.eq(index++).text('Massage Length : ' + massageLength);
-        $liList.eq(index++).text('Coupon : ' + coupon);
+       // $liList.eq(index++).text('Coupon : ' + coupon);
     };
     
     var publicObj = {
         beforeShow: function(parent){
             var $this = $(this);
             var $parent = $(parent);
+			 var $pamentForm = $('#payment-form').find('.form-group').removeClass('has-error');
             var fromPageId = $parent.find('div.mp-pageId').text().trim();
             if (fromPageId === 'panda_massageDetails') 
                 massageDetailPageAsParent($this, $parent);
@@ -579,16 +675,118 @@ var massageDetailsPage = (function(){
     };
     //private function
     function setupTimeDropdown($timeList){
-        var $timeTemp = $('<li class="mp-item"> <a></a></li><li class="divider"></li>');
-        var timeArray = ['9:00am', '9:15am', '9:30am', '9:45am', '10:00am', '10:15am', '10:30am', '10:45am', '11:00am', '11:15am', '11:30am', '11:45am', '12:00pm', '12:15pm', '12:30pm', '12:45pm', '1:00pm', '1:15pm', '1:30pm', '1:45pm', '2:00pm', '2:15pm', '2:30pm', '2:45pm', '3:00pm', '3:15pm', '3:30pm', '3:45pm', '4:00pm', '4:15pm', '4:30pm', '4:45pm', '5:00pm', '5:15pm', '5:30pm', '5:45pm', '6:00pm', '6:15pm', '6:30pm', '6:45pm', '7:00pm', '7:15pm', '7:30pm', '7:45pm', '8:00pm', '8:15pm', '8:30pm', '8:45pm', '9:00pm'];
-        for (var i = 0; i < 49; i++) {
+        $timeList.empty();
+        var timeArray = ['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm','9:00pm'];
+        for (var i = 0; i < 25; i++) {
             var time = timeArray[i];
-            var $cloneTimeTemp = $timeTemp.clone();
-            $cloneTimeTemp.find('a').text(time);
-            $timeList.append($cloneTimeTemp);
+			 var timeTempString = '<li class="mp-item"><a>'+time+'</a></li><li class="divider"></li>';           
+            $timeList.append(timeTempString);
         }
+		$timeList.append('<li class="mp-item noServiceAvaliable" style="display:none"><a>No Services</a></li>');
         $timeList.on("click", "a", processSelection);
     };
+	//private function
+	function processTableSelection(e){
+		if($(this).hasClass('timeTableDisable'))
+		 return false;
+		var value = $(this).text();
+	    var $parentDiv = $(this).closest('div.mp-massageDetails-input');
+		$parentDiv.find('input').val(value);
+        $parentDiv.find('button').html(value + '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true">');
+        $parentDiv.find('div.mp-timeTableDiv').fadeOut();
+		e.preventDefault();
+	}
+	//private function keep for reference
+	function setupTimeTable($timeTable){		
+		var timeArray = ['','9:00am', '9:15am', '9:30am', '9:45am', '10:00am', '10:15am', '10:30am', '10:45am', '11:00am', '11:15am', '11:30am', '11:45am', '12:00pm', '12:15pm', '12:30pm', '12:45pm', '1:00pm', '1:15pm', '1:30pm', '1:45pm', '2:00pm', '2:15pm', '2:30pm', '2:45pm', '3:00pm', '3:15pm', '3:30pm', '3:45pm', '4:00pm', '4:15pm', '4:30pm', '4:45pm', '5:00pm', '5:15pm', '5:30pm', '5:45pm', '6:00pm', '6:15pm', '6:30pm', '6:45pm', '7:00pm', '7:15pm', '7:30pm', '7:45pm', '8:00pm', '8:15pm', '8:30pm', '8:45pm', '9:00pm'];
+		for(var i= 1 ; i <48 ; i = i+4){
+			var tableRowString = '<tr><td>'+timeArray[i]+'</td><td>'+timeArray[i+1]+'</td><td>'+timeArray[i+2]+'</td><td>'+timeArray[i+3]+'</td></tr>';
+			$timeTable.append(tableRowString);
+		}
+		 $timeTable.on("click", "td", processTableSelection);
+	}
+	//private function
+	function massageDetailsTimeForList($this){
+		var $parentInputDiv = $this.closest('.mp-massageDetails-input');
+		var $massageDetailsForm = $this.closest('.mp-massageDetails-form');	
+		var $timeList = $parentInputDiv.find('#massageDetails_timeList');	
+		if($parentInputDiv.hasClass('open'))
+		{
+			$timeList.find('li').removeClass('timeListHide');
+			$timeList.find('li.noServiceAvaliable').hide();
+		}
+		else
+		{
+			var date = $massageDetailsForm.find('input[name="massageDetailsDate"]').val();				 
+			var today = new Date();
+			var todayDateString = pandaUtil.getDateString(today);
+			if (todayDateString === date) {
+				 var timeArray = ['9:00am', '9:30am', '10:00am', '10:30am', '11:00am', '11:30am', '12:00pm', '12:30pm', '1:00pm', '1:30pm', '2:00pm', '2:30pm', '3:00pm', '3:30pm', '4:00pm', '4:30pm', '5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm','9:00pm'];
+				 var currentHours = today.getHours()+1;
+				  var currentMins = today.getMinutes();
+				  currentMins = Math.ceil(currentMins/30)*30;	
+				   if (currentMins === 60) {
+				   	currentMins = '00';
+				   	currentHours = currentHours + 1;
+				   }
+				   				 //special case if over 10,then no service
+				 if(currentHours>22)
+				 {
+				 	$timeList.find('li').not('.noServiceAvaliable').addClass('timeListHide');
+					$timeList.find('li.noServiceAvaliable').show();
+					return ;
+				 }
+				   	var currentSuffix = (currentHours >= 12)? 'pm' : 'am';
+					currentHours = ((currentHours + 11) % 12 + 1);
+					var currentTimeString = currentHours +':'+currentMins+currentSuffix;
+			        if(timeArray.indexOf(currentTimeString)>-1)
+					{
+						var timeStringIndex = timeArray.indexOf(currentTimeString)*2;
+						$timeList.find('li:lt('+timeStringIndex+')').addClass('timeListHide');
+						
+					}
+			}
+		}
+	}
+	//private function keep for reference
+	function massageDetailsTimeForTable($this){
+		var $massageDetailsForm = $this.closest('.mp-massageDetails-form');
+				var $timeTable = $this.next();
+				if($timeTable.css('display')==='none')
+				{				   
+				   var date = $massageDetailsForm.find('input[name="massageDetailsDate"]').val();				 
+				   var today = new Date();
+				   var todayDateString = pandaUtil.getDateString(today);
+			      if (todayDateString === date) {
+				  		var timeArray = ['9:00am', '9:15am', '9:30am', '9:45am', '10:00am', '10:15am', '10:30am', '10:45am', '11:00am', '11:15am', '11:30am', '11:45am', '12:00pm', '12:15pm', '12:30pm', '12:45pm', '1:00pm', '1:15pm', '1:30pm', '1:45pm', '2:00pm', '2:15pm', '2:30pm', '2:45pm', '3:00pm', '3:15pm', '3:30pm', '3:45pm', '4:00pm', '4:15pm', '4:30pm', '4:45pm', '5:00pm', '5:15pm', '5:30pm', '5:45pm', '6:00pm', '6:15pm', '6:30pm', '6:45pm', '7:00pm', '7:15pm', '7:30pm', '7:45pm', '8:00pm', '8:15pm', '8:30pm', '8:45pm', '9:00pm'];
+						var currentHours = today.getHours()+1;
+						var currentMins = today.getMinutes();
+						currentMins = Math.ceil(currentMins/15)*15;	
+						if(currentMins===60)
+						{
+							currentMins = '00';
+							currentHours = currentHours+1;
+						}				
+						var currentSuffix = (currentHours >= 12)? 'pm' : 'am';
+						currentHours = ((currentHours + 11) % 12 + 1);
+						var currentTimeString = currentHours +':'+currentMins+currentSuffix;
+			            if(timeArray.indexOf(currentTimeString)>-1)
+						{
+							var timeStringIndex = timeArray.indexOf(currentTimeString);
+							var rowNum = Math.ceil((timeStringIndex+1)/4);
+							var columnNum = (timeStringIndex)%4;
+							$timeTable.find('tr:lt('+rowNum+')').find('td').addClass('timeTableDisable');
+							$timeTable.find('tr:eq('+(rowNum-1)+')').find('td:gt('+(columnNum-1)+')').removeClass('timeTableDisable');
+						}
+				   }	
+					 $timeTable.fadeIn();
+				}	 
+				else
+				{					
+					  $timeTable.fadeOut();
+					    $massageDetailsForm.find('#massageDetails_timeTable').find('td').removeClass('timeTableDisable');
+				}	
+	}
     // beforeShow and afterShow will call every time when page showup
     // afterResponse only execute once when page load. afterResponse execute before beforeShow.
     var publicObj = {
@@ -610,7 +808,8 @@ var massageDetailsPage = (function(){
             $this.find('li.mp-currentDetailsPage').text(massageName + ' ' + massagePrice);
             $massageDetailsPanel.find('input[name="detailsAmount"]').val(massagePrice.replace(/[^\d.-]/g, ''));
             $massageDetailsPanel.find('input[name="detailsFeeType"]').val(massageFeeType);
-            $this.find('button.massageDetailsTime').html('Select Time<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
+            $massageDetailsPanel.find('input[name="needTable"]').prop( "checked", true );
+			$this.find('button.massageDetailsTime').html('Select Time<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
             $this.find('button.genderPreferred').html('Gender Preferred<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>');
         },
         afterResponse: function(pageId){
@@ -623,7 +822,17 @@ var massageDetailsPage = (function(){
             $datePicker.datepicker({
                 minDate: new Date()
             });
-            setupTimeDropdown($this.find('#massageDetails_timeList'));
+			//setupTimeTable($this.find('#massageDetails_timeTable'));
+             setupTimeDropdown($this.find('#massageDetails_timeList'));
+			$this.find('button.massageDetailsTime').off('click');
+			$this.find('button.massageDetailsTime').on('click',function(e){
+				 var $this = $(this);
+				 // this is for dropdown table. keep the code for reference
+				 //massageDetailsTimeForTable($this);
+				 massageDetailsTimeForList($this);
+				 
+			});
+
             var $genderPreferredList = $this.find('#massageDetails_genderPreferredList');
             $genderPreferredList.on("click", "a", processSelection);
         },
@@ -656,6 +865,49 @@ var massageDetailsPage = (function(){
                 $panelAlert.css('display', 'block');
                 return false;
             };
+			var today = new Date();
+			var pickMonth = date.split('/')[0];
+			pickMonth=parseInt(pickMonth)-1;
+			var pickDay = date.split('/')[1];
+			var pickYear = date.split('/')[2];
+			var pickDate = new Date(pickYear,pickMonth,pickDay,23,59);
+			if(pickDate<today)
+			{
+				$panelAlert.text('Date can not be  in the past !');
+                $panelAlert.css('display', 'block');
+                return false;
+			}
+			//if user select today, we need check whether it is hour after
+			var todayDateString = pandaUtil.getDateString(today);
+			if(todayDateString === date)
+			{
+				var day = today.getDate();
+				var month = today.getMonth(); //January is 0!
+				var year = today.getFullYear();
+				var pureTime = time.replace(/am|pm/gi,'');
+				var hour = pureTime.split(':')[0];
+				var min = pureTime.split(':')[1];
+				var selectTimeObj;
+				if ( time.indexOf("am") > -1 )
+				{					
+					selectTimeObj = new Date(year,month,day,hour,min);
+				}	
+				else 
+				{
+					if(parseInt(hour)<12)
+					{
+						hour=parseInt(hour)+12;
+					}
+					selectTimeObj = new Date(year,month,day,hour,min);
+				}
+				var ONE_HOUR = 60 * 60 * 1000; 
+			    if((selectTimeObj.getTime()-today.getTime())<ONE_HOUR)
+				{
+					$panelAlert.text('Time should be one hour later from now !');
+                	$panelAlert.css('display', 'block');
+                	return false;
+				}
+			}
             return true;
         }
         
@@ -895,7 +1147,9 @@ var pageBackForward = {
 }
 
 var pandaInit = function(){
-
+	var referCode  = pandaUtil.getParameterByName('referCode');
+	if(referCode)
+		localStorage.setItem("referCode", referCode);
     var isRefresh = sessionStorage.getItem('pandaRefresh');
     var tabName = pandaUtil.getParameterByName('tab');
 	var customizedPageHeader = $('[data-mpPageId="'+tabName+'"]');
@@ -1085,9 +1339,21 @@ function pandaPhoneInit(){
     
 }
 
+function pandaLoginSetup(){
+	var firstName = localStorage.getItem('pandaLoginName');
+	var $navigation = $('#mp-navbar').find('.mp-navigation>ul');
+    var navDropdown = $navigation.children('li.dropdown');
+	navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
+	$navigation.children('li.mp-loginHeader').hide();
+	navDropdown.show();
+}
 
 
 $(function(){
+	if(localStorage.getItem('pandaLogin')=== 'true')
+	{
+				pandaLoginSetup();
+	}
     $(window).on('beforeunload', function(){
         for (var pageId in pandaPageObj) {
             if (pandaPageObj.hasOwnProperty(pageId)) {
@@ -1096,14 +1362,12 @@ $(function(){
 					pandaPageObj[pageId].mpRefresh = true;
 				}
             }
-        }
-		
+        }	
         sessionStorage.setItem('mp-pageElement', $('#mp-mainContent').html());
         sessionStorage.setItem('mp-pageState', JSON.stringify(pageStateObj));
         sessionStorage.setItem('mp-pageObj', JSON.stringify(pandaPageObj));
         sessionStorage.setItem('pandaRefresh', true);
-    });
-    
+    });   
     pandaPhoneInit();
     pandaInit();
 });

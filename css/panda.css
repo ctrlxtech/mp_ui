@@ -26,6 +26,14 @@ nav#mp-navbar {
     background-color: #FFFFFF;
 }
 
+nav#mp-navbar .mp-navigation>ul>li.dropdown>ul.dropdown-menu{
+	display:none;
+}
+
+nav#mp-navbar .mp-navigation>ul>li.dropdown.open>ul.dropdown-menu{
+	display:block;
+}
+
 .jumbotron {
     background-color: #FAFAFA !important;
     margin-bottom: 0px !important;
@@ -165,6 +173,61 @@ div.mp-pageContent {
 	line-height: 36px;
 }
 
+#massageDetails_timeTable{
+	  margin-bottom: 10px;
+}
+
+.mp-timeTableDiv{
+    height: 310px;
+    overflow-y: scroll;
+  z-index: 100;
+  position: absolute;
+  top: 58px;
+  width: 100%;
+   border-radius: 6px;
+}
+
+#massageDetails_timeTable tr {
+  background: -webkit-linear-gradient(rgb(240, 240, 240) ,rgb(206, 206, 206) , rgb(240, 240, 240)) repeat scroll 0% 0%;
+  background: -moz-linear-gradient(rgb(240, 240, 240) ,rgb(206, 206, 206)  , rgb(240, 240, 240)) repeat scroll 0% 0%;
+  background: linear-gradient(rgb(240, 240, 240) ,rgb(206, 206, 206) , rgb(240, 240, 240)) repeat scroll 0% 0%;
+}
+
+#massageDetails_timeTable tr td {
+  border: 3px solid rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 8px;
+   box-shadow: 0 0 10px rgb(128, 128, 128);
+   padding: 5px;
+}
+
+#massageDetails_timeTable tr td:hover {
+    background: rgb(215, 215, 215) !important;
+}
+
+.mp-massageDetails-input input[type="radio"]{
+	display: inline;
+   margin-bottom: 20px;
+}
+
+.mp-massageDetails-input.mp-massageDetails-needTable label{
+  display: inline;
+  position: relative;
+  width: 80%;
+}
+
+.mp-massageDetails-input.mp-massageDetails-needTable {
+  margin: 0 auto;
+}
+
+.mp-massageDetails-textarea {
+  width: 100%;
+  margin: 15px auto;
+}
+
+.mp-massageDetails-textarea textarea {
+  margin-left: 0px;
+}
 
 .mp-massageDetails-titlePrice{
     color: rgb(102, 102, 102);
@@ -218,11 +281,19 @@ div.mp-pageContent {
     overflow-y: scroll;
 }
 
+.timeTableDisable{
+	opacity: .25;
+}
+
+.timeListHide{
+	display : none;
+}
+
 .mp-massageDetails-form > .mp-massageDetails-input {
     width: 100%;
     height: 48px;
     line-height: 48px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .mp-massageDetails-form .ui-spinner {
