@@ -10,7 +10,7 @@
  *   begin navigation
  */
 .mp-pageHeader.mp-IconDiv {
-  width: 180px;
+  width: 200px;
   height: 60px;
   display: inline;
   float: left;
@@ -19,7 +19,7 @@
 .mp-navigation {
   position: relative;
   top: 20px;
-  left: 15%;
+  left: 10%;
   display: inline;
   overflow: hidden;
 }

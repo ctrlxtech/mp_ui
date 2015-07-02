@@ -111,6 +111,9 @@ var pandaRegisterPage = (function(){
 			navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
 			$navigation.children('li.mp-loginHeader').hide();
 			navDropdown.show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginfalse').hide();
+			$('#mp-rightSideNav').find('.mp-mobileLoginTrue').show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginName').text(firstName);
 			//go to home page
 			localStorage.setItem("pandaLogin", 'true');
 			localStorage.setItem("pandaLoginName", firstName);
@@ -139,8 +142,13 @@ var pandaRegisterPage = (function(){
 				var gender = $('#panda_register').find('input[name="registerGender"]:checked').val();
 		        serverObj['registerGender']=gender;
 				//TODO need use server side path for panda register!!!
-		        var url = '';				
-		        pandaAjax.post(url, serverObj, afterSubmit);
+				var dataObj = {
+					success : true,
+					firstName : 'Jim'
+				}
+				afterSubmit(dataObj);
+//		        var url = '';				
+//		        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
         }
@@ -164,6 +172,9 @@ var pandaLoginPage = (function(){
 			navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
 			$navigation.children('li.mp-loginHeader').hide();
 			navDropdown.show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginfalse').hide();
+			$('#mp-rightSideNav').find('.mp-mobileLoginTrue').show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginName').text(firstName);
 			//go to home page
 			localStorage.setItem("pandaLogin", 'true');
 			localStorage.setItem("pandaLoginName", firstName);
@@ -188,8 +199,13 @@ var pandaLoginPage = (function(){
 		            serverObj[fieldKey] = fieldValue;
 		        }
 		        //TODO need use server side path for panda Login!!!
-		        var url = '';
-		        pandaAjax.post(url, serverObj, afterSubmit);
+				var dataObj = {
+					success : true,
+					firstName : 'Jim'
+				}
+				afterSubmit(dataObj);
+//		        var url = '';				
+//		        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
         }
@@ -207,6 +223,9 @@ var pandaLogoutPage = (function(){
 			navDropdown.children('a.dropdown-toggle').empty();
 			navDropdown.hide();
 			$navigation.children('li.mp-loginHeader').show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginfalse').show();
+			$('#mp-rightSideNav').find('.mp-mobileLoginTrue').hide();
+			$('#mp-rightSideNav').find('.mp-mobileLoginName').text('');
 			//go to home page
 			localStorage.setItem("pandaLogin", 'false');
 			localStorage.setItem("pandaLoginName", '');
@@ -1325,16 +1344,41 @@ var pandaInit = function(){
 }
 
 function pandaPhoneInit(){
-    var menuLeft = document.getElementById('mp-leftSideNav'), showLeftPush = document.getElementById('mp-showLeftPush'), navBar = document.getElementById('mp-navbar'), mainContent = document.getElementById('mp-mainContent'), footer = document.getElementById('mp-footer');
+    var menuLeft = document.getElementById('mp-leftSideNav'),
+	menuRight = document.getElementById('mp-rightSideNav'),  
+	showLeftPush = document.getElementById('mp-showLeftPush'),
+	showRightPush = document.getElementById('mp-showRightPush'),
+    navBar = document.getElementById('mp-navbar'),
+    mainContent = document.getElementById('mp-mainContent'), 
+	footer = document.getElementById('mp-footer');
     showLeftPush.onclick = function(){
+		if($('#mp-rightSideNav').hasClass('cbp-spmenu-open'))
+		{
+		    classie.toggle( menuRight, 'cbp-spmenu-open' );
+		}
         classie.toggle(this, 'active');
-        classie.toggle(navBar, 'cbp-spmenu-push-toright');
+       // classie.toggle(navBar, 'cbp-spmenu-push-toright');
         classie.toggle(mainContent, 'cbp-spmenu-push-toright');
         classie.toggle(footer, 'cbp-spmenu-push-toright');
         classie.toggle(menuLeft, 'cbp-spmenu-open');
+	
     };
+	showRightPush.onclick = function() {
+	    if($('#mp-leftSideNav').hasClass('cbp-spmenu-open'))
+		{
+            classie.toggle(mainContent, 'cbp-spmenu-push-toright');
+           classie.toggle(footer, 'cbp-spmenu-push-toright');
+           classie.toggle(menuLeft, 'cbp-spmenu-open');
+		}
+		classie.toggle(this, 'active');
+		classie.toggle( menuRight, 'cbp-spmenu-open' );
+	
+	};
     $('#mp-leftSideNav').on('click', function(){
-        $('#mp-showLeftPush').click();
+        $('#mp-showLeftPush').trigger('click');
+    });
+	 $('#mp-rightSideNav').on('click', function(){
+        $('#mp-showRightPush').trigger('click');
     });
     
 }
@@ -1346,6 +1390,9 @@ function pandaLoginSetup(){
 	navDropdown.children('a.dropdown-toggle').html(firstName+'<span class="caret"></span>');
 	$navigation.children('li.mp-loginHeader').hide();
 	navDropdown.show();
+	$('#mp-rightSideNav').find('.mp-mobileLoginfalse').hide();
+	$('#mp-rightSideNav').find('.mp-mobileLoginTrue').show();
+	$('#mp-rightSideNav').find('.mp-mobileLoginName').text(firstName);
 }
 
 

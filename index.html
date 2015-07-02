@@ -10,21 +10,15 @@
         <link rel="stylesheet" href="./css/jquery-ui.min.css" type="text/css">
 		<link rel="stylesheet" href="./css/hover.css" type="text/css">
         <link rel="stylesheet" href="./css/panda.css" type="text/css">
-        <link rel="stylesheet" href="./css/paiPanda.css" type="text/css">
 		<link rel="stylesheet" href="./css/largeScreen.css" type="text/css">
         <link rel="stylesheet" href="./css/smallScreen.css" type="text/css">
-		<link rel="stylesheet" href="./css/signup.css" type="text/css">
         <script type="text/javascript" src="./js/jquery.js">
         </script>
         <script type="text/javascript" src="./js/bootstrap.js">
         </script>
-        <script type="text/javascript" src="./js/modernizr.custom.js">
-        </script>
         <script type="text/javascript" src="./js/jquery.history.js">
         </script>
-        <script type="text/javascript" src="./js/jquery-ui.min.js">
-        </script>
-        <script type="text/javascript" src="./js/validator.js">
+		<script type="text/javascript" src="./js/pandaUtil.js">
         </script>
         <script type="text/javascript" src="https://js.stripe.com/v2/">
         </script>
@@ -38,7 +32,7 @@
             <a href="" class="mp-pageHeader" data-mpController="pandaHelpCenterPage" data-mpPageId="panda_helpCenter">Help Center</a>
             <a href="" class="mp-pageHeader" data-mpPageId="panda_about">About Panda</a>
 			<a href="" class="mp-pageHeader" data-mpController="pandaContactUsPage"  data-mpPageId="panda_contactUs">Contact Us</a>
-			<a href="" class="mp-pageHeader" data-mpController="pandaLoginPage" data-mpPageId="panda_login" >Login</a>
+
 			<ul class="mp-sideBar-socialLink">
 				<li> <a class="mp-socialLink mp-socialLink-facebook" href="http://facebook.com/massagepanda" target="_blank"></a> </li>
                 <li> <a class="mp-socialLink mp-socialLink-twitter" href="http://twitter.com/massage_panda" target="_blank"></a> </li>   
@@ -47,13 +41,21 @@
 				<li> <a class="mp-socialLink mp-socialLink-mail" href="mailto:support@massagepanda.com" target="_blank"></a> </li>				
 			</ul>
         </nav>
+		<nav id="mp-rightSideNav" class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right mp-largeScreenHide" >
+				<a href="" class="mp-pageHeader mp-mobileLoginfalse" data-mpController="pandaLoginPage" data-mpPageId="panda_login" >Login</a>
+				<a href="" class="mp-pageHeader mp-mobileLoginTrue mp-mobileLoginName" style="display:none"></a>
+				<a href="" class="mp-pageHeader mp-mobileLoginTrue" data-mpController="pandaLogoutPage" data-mpPageId="panda_logout" style="display:none">Logout</a>
+		</nav>
         <nav id="mp-navbar" class="navbar navbar-default navbar-fixed-top cbp-spmenu-push">
             <div class="container">
                 <div id="mp-showLeftPush" class="mp-navigation-mobileIcon mp-largeScreenHide">
                     <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                 </div>
                 <div class="mp-pageHeader mp-IconDiv" data-mpShow="true" data-mpLoaded="true" data-mpPageId="panda_home">
-                    <img class="mp-pandaIcon" src="./image/pandaIcon.png"/>
+                    <img class="mp-pandaIcon" src="./image/pandaNewIcon.png"/>
+                </div>
+				<div id="mp-showRightPush"  class="mp-navigation-mobileSetting mp-largeScreenHide">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </div>
                 <div class="mp-navigation mp-smallScreenHide">
                     <ul>
