@@ -142,13 +142,8 @@ var pandaRegisterPage = (function(){
 				var gender = $('#panda_register').find('input[name="registerGender"]:checked').val();
 		        serverObj['registerGender']=gender;
 				//TODO need use server side path for panda register!!!
-				var dataObj = {
-					success : true,
-					firstName : 'Jim'
-				}
-				afterSubmit(dataObj);
-//		        var url = '';				
-//		        pandaAjax.post(url, serverObj, afterSubmit);
+		        var url = '';				
+    	        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
         }
@@ -199,13 +194,8 @@ var pandaLoginPage = (function(){
 		            serverObj[fieldKey] = fieldValue;
 		        }
 		        //TODO need use server side path for panda Login!!!
-				var dataObj = {
-					success : true,
-					firstName : 'Jim'
-				}
-				afterSubmit(dataObj);
-//		        var url = '';				
-//		        pandaAjax.post(url, serverObj, afterSubmit);
+		        var url = '';				
+		        pandaAjax.post(url, serverObj, afterSubmit);
 				event.preventDefault()
             });
         }
@@ -1357,7 +1347,7 @@ function pandaPhoneInit(){
 		    classie.toggle( menuRight, 'cbp-spmenu-open' );
 		}
         classie.toggle(this, 'active');
-       // classie.toggle(navBar, 'cbp-spmenu-push-toright');
+        classie.toggle(navBar, 'cbp-spmenu-push-toright');
         classie.toggle(mainContent, 'cbp-spmenu-push-toright');
         classie.toggle(footer, 'cbp-spmenu-push-toright');
         classie.toggle(menuLeft, 'cbp-spmenu-open');
@@ -1366,6 +1356,7 @@ function pandaPhoneInit(){
 	showRightPush.onclick = function() {
 	    if($('#mp-leftSideNav').hasClass('cbp-spmenu-open'))
 		{
+			 classie.toggle(navBar, 'cbp-spmenu-push-toright');
             classie.toggle(mainContent, 'cbp-spmenu-push-toright');
            classie.toggle(footer, 'cbp-spmenu-push-toright');
            classie.toggle(menuLeft, 'cbp-spmenu-open');
