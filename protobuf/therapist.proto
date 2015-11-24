@@ -1,0 +1,76 @@
+package massagepanda.therapist;
+
+message Order {
+  required string id = 1;
+  required int64 service_time = 2; // in milliseconds
+  required int32 service_duration = 3; // in minutes
+  required string service_type = 4;
+
+  enum OrderStatus {
+    PENDING = 0;
+    CONFIRMED = 1;
+    SHIPPED = 2;
+    CANCELED = 3;
+    CHARGED = 4;
+    REFUNDED = 5;
+    PUNISHED = 6;
+  }
+
+  required OrderStatus order_status = 5;
+  required int32 earn = 6;
+
+  message Address {  
+    required string address_line = 1;
+    required string city = 2;
+    required string state = 3;
+    required string country_and_zipcode = 4;
+  }
+
+  required Address address = 7;
+}
+
+message Schedule {
+  message Slot {
+    enum Status {
+      ACTIVE = 0;
+      INACTIVE = 1;
+    }
+    
+    required Status status = 1 [default = INACTIVE];
+    
+    enum Day {
+      MONDAY = 0;
+      TUESDAY = 1;
+      WEDNESDAY = 2;
+      THURSDAY = 3;
+      FRIDAY = 4;
+      SATURDAY = 5;
+      SUNDAY = 6;
+    }
+    
+    required Day day = 2;
+
+    message Interval {
+      required int64 start_time = 1; // in milliseconds
+      required int64 end_time = 2; // in milliseconds
+    }
+
+    repeated Interval interval;
+  }
+
+  repeated Slot slot;
+}
+
+message ActionRequest {
+  required string user_id = 1;
+  required int32 order_id = 2;
+ 
+  enum Action {
+    ACCEPT_ORDER = 0;
+    CHECKIN = 1;
+    CHECKOUT = 2;
+    EMERGENCY = 3;
+  }
+
+  required Action action = 3;
+}
