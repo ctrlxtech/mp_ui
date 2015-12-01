@@ -39,8 +39,8 @@ message OrderList {
 message Schedule {
   message Slot {
     enum Status {
-      ACTIVE = 0;
-      INACTIVE = 1;
+      INACTIVE = 0;
+      ACTIVE = 1;
     }
     
     required Status status = 1 [default = INACTIVE];
