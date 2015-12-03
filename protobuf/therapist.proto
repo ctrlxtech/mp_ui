@@ -58,8 +58,8 @@ message Schedule {
     required Day day = 2;
 
     message Interval {
-      required int64 start_time = 1; // in milliseconds
-      required int64 end_time = 2; // in milliseconds
+      required int32 start_time = 1; // in seconds
+      required int32 end_time = 2; // in seconds
     }
 
     repeated Interval interval = 3;
