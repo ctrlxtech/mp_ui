@@ -31,6 +31,9 @@ message OrderList {
     }
 
     required Address address = 7;
+
+    required string customer_name = 9;
+    required int64 creation_time = 8; // in milliseconds
   }
 
   repeated Order order = 1;
