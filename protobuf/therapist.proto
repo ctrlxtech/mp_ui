@@ -34,6 +34,7 @@ message OrderList {
 
     required string customer_name = 9;
     required int64 creation_time = 8; // in milliseconds
+    required int64 external_id = 10; // used in UI display
   }
 
   repeated Order order = 1;
