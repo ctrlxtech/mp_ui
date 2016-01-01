@@ -4,7 +4,8 @@ package massagepanda.therapist;
 
 message OrderList {
   message Order {
-    required int64 id = 1;
+    required string id = 1;
+    required int32 external_id = 10; // used in UI display
     required int64 service_time = 2; // in milliseconds
     required int32 service_duration = 3; // in minutes
     required string service_type = 4;
@@ -34,7 +35,6 @@ message OrderList {
 
     required string customer_name = 9;
     required int64 creation_time = 8; // in milliseconds
-    required int64 external_id = 10; // used in UI display
   }
 
   repeated Order order = 1;
