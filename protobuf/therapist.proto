@@ -74,7 +74,7 @@ message Schedule {
 
 message ActionRequest {
   required string user_id = 1;
-  required int64 order_id = 2;
+  required string order_id = 2;
  
   enum Action {
     ACCEPT_ORDER = 0;
