@@ -1,0 +1,503 @@
+<?xml version="1.0"?>  
+<row>
+<row _id="1" _uuid="E3581C6B-1741-4015-A7ED-5B13457983FD" _position="1" _address="http://data.sfgov.org/resource/_6d9h-4u5v/1">
+<fullstreetname>01ST ST</fullstreetname>
+<streetname>01ST</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="2" _uuid="F572B19D-B70F-4FF7-A8CA-644696E01580" _position="2" _address="http://data.sfgov.org/resource/_6d9h-4u5v/2">
+<fullstreetname>01ST TI ST</fullstreetname>
+<streetname>01ST TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="3" _uuid="D8CD0474-861F-4B5E-9EBF-51C70A7B279A" _position="3" _address="http://data.sfgov.org/resource/_6d9h-4u5v/3">
+<fullstreetname>02ND AVE</fullstreetname>
+<streetname>02ND</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="4" _uuid="47164530-C1C7-4C86-9F86-008A70B60B16" _position="4" _address="http://data.sfgov.org/resource/_6d9h-4u5v/4">
+<fullstreetname>02ND ST</fullstreetname>
+<streetname>02ND</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="5" _uuid="536B6C24-E9C8-4D06-BF0B-199D402A0367" _position="5" _address="http://data.sfgov.org/resource/_6d9h-4u5v/5">
+<fullstreetname>02ND TI ST</fullstreetname>
+<streetname>02ND TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="6" _uuid="BE9AA1C9-6564-4579-9CB2-086BE17B2D1A" _position="6" _address="http://data.sfgov.org/resource/_6d9h-4u5v/6">
+<fullstreetname>03RD AVE</fullstreetname>
+<streetname>03RD</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="7" _uuid="DDA7DB9E-437F-4605-8707-EC4CAA5A8A04" _position="7" _address="http://data.sfgov.org/resource/_6d9h-4u5v/7">
+<fullstreetname>03RD ST</fullstreetname>
+<streetname>03RD</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="8" _uuid="081AA408-7CBA-4CC6-A74C-8CAE2DCC9541" _position="8" _address="http://data.sfgov.org/resource/_6d9h-4u5v/8">
+<fullstreetname>03RD TI ST</fullstreetname>
+<streetname>03RD TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="9" _uuid="303FDAB4-FC84-49B0-9136-21A752AC9AA7" _position="9" _address="http://data.sfgov.org/resource/_6d9h-4u5v/9">
+<fullstreetname>04TH AVE</fullstreetname>
+<streetname>04TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="10" _uuid="EBDF32B6-7FB3-4AC8-91CE-9944444A8F57" _position="10" _address="http://data.sfgov.org/resource/_6d9h-4u5v/10">
+<fullstreetname>04TH ST</fullstreetname>
+<streetname>04TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="11" _uuid="F5A8DF18-B114-400B-B883-055FA9D41AB4" _position="11" _address="http://data.sfgov.org/resource/_6d9h-4u5v/11">
+<fullstreetname>04TH TI ST</fullstreetname>
+<streetname>04TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="12" _uuid="56F6D727-AE40-4BDB-B527-92E1795F0FA6" _position="12" _address="http://data.sfgov.org/resource/_6d9h-4u5v/12">
+<fullstreetname>05TH AVE</fullstreetname>
+<streetname>05TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="13" _uuid="459B121F-B460-4DC7-95C1-02EAFCF62D77" _position="13" _address="http://data.sfgov.org/resource/_6d9h-4u5v/13">
+<fullstreetname>05TH ST</fullstreetname>
+<streetname>05TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="14" _uuid="90702DF8-102C-439B-94F4-32E3B8E38620" _position="14" _address="http://data.sfgov.org/resource/_6d9h-4u5v/14">
+<fullstreetname>05TH TI ST</fullstreetname>
+<streetname>05TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="15" _uuid="1AD5CEA9-9326-431F-9930-5FD6A7DADDCB" _position="15" _address="http://data.sfgov.org/resource/_6d9h-4u5v/15">
+<fullstreetname>06TH AVE</fullstreetname>
+<streetname>06TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="16" _uuid="71D00E96-716E-45B0-883C-4572A274D818" _position="16" _address="http://data.sfgov.org/resource/_6d9h-4u5v/16">
+<fullstreetname>06TH ST</fullstreetname>
+<streetname>06TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="17" _uuid="835450D0-0453-4EFC-BCE8-B740875D0243" _position="17" _address="http://data.sfgov.org/resource/_6d9h-4u5v/17">
+<fullstreetname>06TH HP AVE</fullstreetname>
+<streetname>06TH HP</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="18" _uuid="728887F6-BD41-4F97-840B-5DF27E51B69A" _position="18" _address="http://data.sfgov.org/resource/_6d9h-4u5v/18">
+<fullstreetname>06TH TI ST</fullstreetname>
+<streetname>06TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="19" _uuid="F28DDF24-3E11-4BC9-A8C0-F1C7463B3078" _position="19" _address="http://data.sfgov.org/resource/_6d9h-4u5v/19">
+<fullstreetname>07TH AVE</fullstreetname>
+<streetname>07TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="20" _uuid="EEA3CC67-25AF-4315-8F76-97FED8572F9A" _position="20" _address="http://data.sfgov.org/resource/_6d9h-4u5v/20">
+<fullstreetname>07TH ST</fullstreetname>
+<streetname>07TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="21" _uuid="CA6A4F25-FD25-4E5F-87E4-712A1E26F927" _position="21" _address="http://data.sfgov.org/resource/_6d9h-4u5v/21">
+<fullstreetname>08TH AVE</fullstreetname>
+<streetname>08TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="22" _uuid="7191FBD0-C0E5-4BBA-A887-4114893A6DD6" _position="22" _address="http://data.sfgov.org/resource/_6d9h-4u5v/22">
+<fullstreetname>08TH ST</fullstreetname>
+<streetname>08TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="23" _uuid="7B969B59-1386-4238-BB04-9AC764B80D6C" _position="23" _address="http://data.sfgov.org/resource/_6d9h-4u5v/23">
+<fullstreetname>08TH TI ST</fullstreetname>
+<streetname>08TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="24" _uuid="803B6CC4-7A7D-49B9-AA24-F2E650292518" _position="24" _address="http://data.sfgov.org/resource/_6d9h-4u5v/24">
+<fullstreetname>09TH AVE</fullstreetname>
+<streetname>09TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="25" _uuid="8C1ED91B-0054-4133-B28D-07F3E842A862" _position="25" _address="http://data.sfgov.org/resource/_6d9h-4u5v/25">
+<fullstreetname>09TH ST</fullstreetname>
+<streetname>09TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="26" _uuid="68D11623-9CBD-4954-8B7F-607CF726F3E0" _position="26" _address="http://data.sfgov.org/resource/_6d9h-4u5v/26">
+<fullstreetname>09TH TI ST</fullstreetname>
+<streetname>09TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="27" _uuid="9BF719E0-DED0-47A3-A1FF-83788F9F5E0F" _position="27" _address="http://data.sfgov.org/resource/_6d9h-4u5v/27">
+<fullstreetname>10TH AVE</fullstreetname>
+<streetname>10TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="28" _uuid="F0673A8C-6907-45F6-BA9E-F4CC7CD1A5B8" _position="28" _address="http://data.sfgov.org/resource/_6d9h-4u5v/28">
+<fullstreetname>10TH ST</fullstreetname>
+<streetname>10TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="29" _uuid="FEA2080C-B870-4C74-BB47-83F8A8E2955F" _position="29" _address="http://data.sfgov.org/resource/_6d9h-4u5v/29">
+<fullstreetname>10TH TI ST</fullstreetname>
+<streetname>10TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="30" _uuid="C87AD54A-0331-41E6-AAB5-472A7DBFFA15" _position="30" _address="http://data.sfgov.org/resource/_6d9h-4u5v/30">
+<fullstreetname>11TH AVE</fullstreetname>
+<streetname>11TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="31" _uuid="3E79EACC-4D5D-4427-93C1-FC458452D76E" _position="31" _address="http://data.sfgov.org/resource/_6d9h-4u5v/31">
+<fullstreetname>11TH ST</fullstreetname>
+<streetname>11TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="32" _uuid="8A569E6F-3A81-46BE-A96C-CC3C65D008BE" _position="32" _address="http://data.sfgov.org/resource/_6d9h-4u5v/32">
+<fullstreetname>11TH TI ST</fullstreetname>
+<streetname>11TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="33" _uuid="DDF90D31-C911-472C-B6C2-C22BF4219C09" _position="33" _address="http://data.sfgov.org/resource/_6d9h-4u5v/33">
+<fullstreetname>12TH AVE</fullstreetname>
+<streetname>12TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="34" _uuid="9F84DEBD-EF6F-46C4-85FB-D704EEE2A23F" _position="34" _address="http://data.sfgov.org/resource/_6d9h-4u5v/34">
+<fullstreetname>12TH ST</fullstreetname>
+<streetname>12TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="35" _uuid="C951AC0C-947D-4D4F-BB2A-867A3475C026" _position="35" _address="http://data.sfgov.org/resource/_6d9h-4u5v/35">
+<fullstreetname>12TH TI ST</fullstreetname>
+<streetname>12TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="36" _uuid="CDFFF31C-2D03-4FC7-8333-DCD6D61FC921" _position="36" _address="http://data.sfgov.org/resource/_6d9h-4u5v/36">
+<fullstreetname>13TH ST</fullstreetname>
+<streetname>13TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="37" _uuid="B6A9CD5D-6EE7-47C5-AA15-F0A10ACDCC93" _position="37" _address="http://data.sfgov.org/resource/_6d9h-4u5v/37">
+<fullstreetname>13TH TI ST</fullstreetname>
+<streetname>13TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="38" _uuid="3E86F66B-5DA1-4B32-A8AE-5CF9868AE351" _position="38" _address="http://data.sfgov.org/resource/_6d9h-4u5v/38">
+<fullstreetname>14TH AVE</fullstreetname>
+<streetname>14TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="39" _uuid="3275408D-BBA8-4EC0-AAA5-20724AA41D9D" _position="39" _address="http://data.sfgov.org/resource/_6d9h-4u5v/39">
+<fullstreetname>14TH ST</fullstreetname>
+<streetname>14TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="40" _uuid="FC95A3DB-ED5E-4014-8815-38A297A11877" _position="40" _address="http://data.sfgov.org/resource/_6d9h-4u5v/40">
+<fullstreetname>14TH TI ST</fullstreetname>
+<streetname>14TH TI</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="41" _uuid="E198F785-A230-4AD8-B95D-CEDB69C34C15" _position="41" _address="http://data.sfgov.org/resource/_6d9h-4u5v/41">
+<fullstreetname>15TH AVE</fullstreetname>
+<streetname>15TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="42" _uuid="C60A0B11-1935-451D-8E4B-3FF8F9453A86" _position="42" _address="http://data.sfgov.org/resource/_6d9h-4u5v/42">
+<fullstreetname>15TH ST</fullstreetname>
+<streetname>15TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="43" _uuid="D9B5372F-4890-4F46-88E3-7F9F368B0D6E" _position="43" _address="http://data.sfgov.org/resource/_6d9h-4u5v/43">
+<fullstreetname>16TH AVE</fullstreetname>
+<streetname>16TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="44" _uuid="24447DFB-A6BF-48B7-9EB4-043D84C52F47" _position="44" _address="http://data.sfgov.org/resource/_6d9h-4u5v/44">
+<fullstreetname>16TH ST</fullstreetname>
+<streetname>16TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="45" _uuid="B9533B1E-01E1-4E8F-8FE0-FBC004E2E3FA" _position="45" _address="http://data.sfgov.org/resource/_6d9h-4u5v/45">
+<fullstreetname>17TH AVE</fullstreetname>
+<streetname>17TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="46" _uuid="2007C52E-E541-4021-BDF2-097B317608F7" _position="46" _address="http://data.sfgov.org/resource/_6d9h-4u5v/46">
+<fullstreetname>17TH ST</fullstreetname>
+<streetname>17TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="47" _uuid="EC1D830E-EF5B-4B74-90E1-37207EF3706B" _position="47" _address="http://data.sfgov.org/resource/_6d9h-4u5v/47">
+<fullstreetname>18TH AVE</fullstreetname>
+<streetname>18TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="48" _uuid="75198C9F-7844-47C4-BD05-090590DB0745" _position="48" _address="http://data.sfgov.org/resource/_6d9h-4u5v/48">
+<fullstreetname>18TH ST</fullstreetname>
+<streetname>18TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="49" _uuid="99B457F9-8E69-4E65-B063-3B4E0479FFE3" _position="49" _address="http://data.sfgov.org/resource/_6d9h-4u5v/49">
+<fullstreetname>19TH AVE</fullstreetname>
+<streetname>19TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="50" _uuid="40F04407-F764-4683-8F30-DB69605F65D9" _position="50" _address="http://data.sfgov.org/resource/_6d9h-4u5v/50">
+<fullstreetname>19TH ST</fullstreetname>
+<streetname>19TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="51" _uuid="9B25B1D2-57A2-49AC-8601-F1D50DEADC19" _position="51" _address="http://data.sfgov.org/resource/_6d9h-4u5v/51">
+<fullstreetname>20TH AVE</fullstreetname>
+<streetname>20TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="52" _uuid="5D926F6F-5229-4304-B936-77BA695A0AB7" _position="52" _address="http://data.sfgov.org/resource/_6d9h-4u5v/52">
+<fullstreetname>20TH ST</fullstreetname>
+<streetname>20TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="53" _uuid="667978BD-4141-4BDD-AF2E-7D9D7CBF569B" _position="53" _address="http://data.sfgov.org/resource/_6d9h-4u5v/53">
+<fullstreetname>21ST AVE</fullstreetname>
+<streetname>21ST</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="54" _uuid="C0A09C81-078D-4562-8EDC-0EDBC4724E3E" _position="54" _address="http://data.sfgov.org/resource/_6d9h-4u5v/54">
+<fullstreetname>21ST ST</fullstreetname>
+<streetname>21ST</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="55" _uuid="4C544FED-16AD-4B13-8D14-29D0E7D7C76E" _position="55" _address="http://data.sfgov.org/resource/_6d9h-4u5v/55">
+<fullstreetname>22ND AVE</fullstreetname>
+<streetname>22ND</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="56" _uuid="17C13EE9-B384-4185-AA5A-56C08DBCBF28" _position="56" _address="http://data.sfgov.org/resource/_6d9h-4u5v/56">
+<fullstreetname>22ND ST</fullstreetname>
+<streetname>22ND</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="57" _uuid="11017CEB-EE20-4168-8212-0FE0A564BFFE" _position="57" _address="http://data.sfgov.org/resource/_6d9h-4u5v/57">
+<fullstreetname>23RD AVE</fullstreetname>
+<streetname>23RD</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="58" _uuid="6519BE07-FEBE-4797-9E49-099022EDD7CB" _position="58" _address="http://data.sfgov.org/resource/_6d9h-4u5v/58">
+<fullstreetname>23RD ST</fullstreetname>
+<streetname>23RD</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="59" _uuid="D0EF679A-EC63-4463-BA85-87BB10980379" _position="59" _address="http://data.sfgov.org/resource/_6d9h-4u5v/59">
+<fullstreetname>24TH AVE</fullstreetname>
+<streetname>24TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="60" _uuid="D77DD425-E0B9-481F-AEAD-0F9844C44132" _position="60" _address="http://data.sfgov.org/resource/_6d9h-4u5v/60">
+<fullstreetname>24TH ST</fullstreetname>
+<streetname>24TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="61" _uuid="AD17981F-EDC8-4786-AF68-46F78BC676E0" _position="61" _address="http://data.sfgov.org/resource/_6d9h-4u5v/61">
+<fullstreetname>25TH AVE</fullstreetname>
+<streetname>25TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="62" _uuid="052D1FBC-F766-4997-85B6-07177EF365CD" _position="62" _address="http://data.sfgov.org/resource/_6d9h-4u5v/62">
+<fullstreetname>25TH AVE NORTH</fullstreetname>
+<streetname>25TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="63" _uuid="E094326D-DE17-4BFD-BCF6-B4316DA992A6" _position="63" _address="http://data.sfgov.org/resource/_6d9h-4u5v/63">
+<fullstreetname>25TH ST</fullstreetname>
+<streetname>25TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="64" _uuid="E43D157E-D8D6-4FC4-B8D8-57D9F8F05B04" _position="64" _address="http://data.sfgov.org/resource/_6d9h-4u5v/64">
+<fullstreetname>26TH AVE</fullstreetname>
+<streetname>26TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="65" _uuid="F6474F3A-A10D-4B4B-8940-42F6005BC759" _position="65" _address="http://data.sfgov.org/resource/_6d9h-4u5v/65">
+<fullstreetname>26TH ST</fullstreetname>
+<streetname>26TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="66" _uuid="0A994788-0E57-4E8D-867F-290D6E8B0592" _position="66" _address="http://data.sfgov.org/resource/_6d9h-4u5v/66">
+<fullstreetname>27TH AVE</fullstreetname>
+<streetname>27TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="67" _uuid="62947D19-23B9-40B2-8682-EB0D49CE0DCD" _position="67" _address="http://data.sfgov.org/resource/_6d9h-4u5v/67">
+<fullstreetname>27TH ST</fullstreetname>
+<streetname>27TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="68" _uuid="4A797A83-AC80-40CE-A78F-751FEBA72C4B" _position="68" _address="http://data.sfgov.org/resource/_6d9h-4u5v/68">
+<fullstreetname>28TH AVE</fullstreetname>
+<streetname>28TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="69" _uuid="040C8D3E-AD62-4398-B0A6-4F0291FAE4BE" _position="69" _address="http://data.sfgov.org/resource/_6d9h-4u5v/69">
+<fullstreetname>28TH ST</fullstreetname>
+<streetname>28TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="70" _uuid="E56E64DF-D340-4924-ADEF-6B5DEDB62C4E" _position="70" _address="http://data.sfgov.org/resource/_6d9h-4u5v/70">
+<fullstreetname>29TH AVE</fullstreetname>
+<streetname>29TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="71" _uuid="DF8797E5-1BAE-448F-939E-3A4F9FFE59F5" _position="71" _address="http://data.sfgov.org/resource/_6d9h-4u5v/71">
+<fullstreetname>29TH ST</fullstreetname>
+<streetname>29TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="72" _uuid="FCA4C390-D844-45E0-AA51-4493ABD10C78" _position="72" _address="http://data.sfgov.org/resource/_6d9h-4u5v/72">
+<fullstreetname>30TH AVE</fullstreetname>
+<streetname>30TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="73" _uuid="5E8CCE19-C120-4D74-BA3A-90B1E60FC97F" _position="73" _address="http://data.sfgov.org/resource/_6d9h-4u5v/73">
+<fullstreetname>30TH ST</fullstreetname>
+<streetname>30TH</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="74" _uuid="A4A8032C-E89A-4A95-9C38-D580E4CF3481" _position="74" _address="http://data.sfgov.org/resource/_6d9h-4u5v/74">
+<fullstreetname>31ST AVE</fullstreetname>
+<streetname>31ST</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="75" _uuid="EB01D0FE-8EDF-4F0E-8E59-706AE1C10277" _position="75" _address="http://data.sfgov.org/resource/_6d9h-4u5v/75">
+<fullstreetname>31ST ST</fullstreetname>
+<streetname>31ST</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="76" _uuid="FAFC94D1-602A-4A65-B92C-6B42FAD11A32" _position="76" _address="http://data.sfgov.org/resource/_6d9h-4u5v/76">
+<fullstreetname>32ND AVE</fullstreetname>
+<streetname>32ND</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="77" _uuid="9C9AE287-59FC-4C87-A2AF-27CC370D3539" _position="77" _address="http://data.sfgov.org/resource/_6d9h-4u5v/77">
+<fullstreetname>33RD AVE</fullstreetname>
+<streetname>33RD</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="78" _uuid="A60C72A4-262E-47C1-8A71-C31F254BC83C" _position="78" _address="http://data.sfgov.org/resource/_6d9h-4u5v/78">
+<fullstreetname>34TH AVE</fullstreetname>
+<streetname>34TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="79" _uuid="CABD6DA4-A7F1-417E-AC02-A1E169BA7652" _position="79" _address="http://data.sfgov.org/resource/_6d9h-4u5v/79">
+<fullstreetname>35TH AVE</fullstreetname>
+<streetname>35TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="80" _uuid="23420E72-DB2F-4AD9-A993-A1FC0E4D03DE" _position="80" _address="http://data.sfgov.org/resource/_6d9h-4u5v/80">
+<fullstreetname>36TH AVE</fullstreetname>
+<streetname>36TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="81" _uuid="1103426B-7966-4D5B-9883-8098AC8DB2EB" _position="81" _address="http://data.sfgov.org/resource/_6d9h-4u5v/81">
+<fullstreetname>37TH AVE</fullstreetname>
+<streetname>37TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="82" _uuid="9D9F9893-50F3-4CFE-B530-8A672EB9E432" _position="82" _address="http://data.sfgov.org/resource/_6d9h-4u5v/82">
+<fullstreetname>38TH AVE</fullstreetname>
+<streetname>38TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="83" _uuid="1D0827EB-1ECE-49F2-8922-D8B48C132B90" _position="83" _address="http://data.sfgov.org/resource/_6d9h-4u5v/83">
+<fullstreetname>39TH AVE</fullstreetname>
+<streetname>39TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="84" _uuid="FAB5D19A-D58E-42D3-9F2D-2639EF0CACD4" _position="84" _address="http://data.sfgov.org/resource/_6d9h-4u5v/84">
+<fullstreetname>40TH AVE</fullstreetname>
+<streetname>40TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="85" _uuid="609E2DBE-3B71-44C4-AFC2-FA4FA3753068" _position="85" _address="http://data.sfgov.org/resource/_6d9h-4u5v/85">
+<fullstreetname>41ST AVE</fullstreetname>
+<streetname>41ST</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="86" _uuid="BE122DB6-45CB-4EB5-9EF7-0D112B38522F" _position="86" _address="http://data.sfgov.org/resource/_6d9h-4u5v/86">
+<fullstreetname>42ND AVE</fullstreetname>
+<streetname>42ND</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="87" _uuid="D12D19A2-E5C9-424D-906C-BE6D7951452C" _position="87" _address="http://data.sfgov.org/resource/_6d9h-4u5v/87">
+<fullstreetname>43RD AVE</fullstreetname>
+<streetname>43RD</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="88" _uuid="02EB408C-686D-4CF3-BDE9-C7FB2617B9E8" _position="88" _address="http://data.sfgov.org/resource/_6d9h-4u5v/88">
+<fullstreetname>44TH AVE</fullstreetname>
+<streetname>44TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="89" _uuid="8EBEBB2E-CEAC-4503-89CB-B48CF04C3CD0" _position="89" _address="http://data.sfgov.org/resource/_6d9h-4u5v/89">
+<fullstreetname>45TH AVE</fullstreetname>
+<streetname>45TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="90" _uuid="67B61125-7A0D-4465-90E0-E315FB8DB6E3" _position="90" _address="http://data.sfgov.org/resource/_6d9h-4u5v/90">
+<fullstreetname>46TH AVE</fullstreetname>
+<streetname>46TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="91" _uuid="590D9E80-7AFE-4270-949F-9A5E3865A5AF" _position="91" _address="http://data.sfgov.org/resource/_6d9h-4u5v/91">
+<fullstreetname>47TH AVE</fullstreetname>
+<streetname>47TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="92" _uuid="0F105685-FDB9-434A-81CA-979F772A6F1D" _position="92" _address="http://data.sfgov.org/resource/_6d9h-4u5v/92">
+<fullstreetname>48TH AVE</fullstreetname>
+<streetname>48TH</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="93" _uuid="35DC8897-8A72-404E-A645-373568625881" _position="93" _address="http://data.sfgov.org/resource/_6d9h-4u5v/93">
+<fullstreetname>A ST</fullstreetname>
+<streetname>A</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="94" _uuid="1A65BDDE-4B05-4367-8A81-437204EC7491" _position="94" _address="http://data.sfgov.org/resource/_6d9h-4u5v/94">
+<fullstreetname>ABBEY ST</fullstreetname>
+<streetname>ABBEY</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="95" _uuid="0F64DB54-A30B-4390-BD55-3FE137DF328C" _position="95" _address="http://data.sfgov.org/resource/_6d9h-4u5v/95">
+<fullstreetname>ACACIA AVE</fullstreetname>
+<streetname>ACACIA</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="96" _uuid="BE89C73A-533C-4C13-9A1E-68413B56377A" _position="96" _address="http://data.sfgov.org/resource/_6d9h-4u5v/96">
+<fullstreetname>ACACIA ST</fullstreetname>
+<streetname>ACACIA</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="97" _uuid="FD474A04-537F-42B2-B2C8-3F5627AFA20A" _position="97" _address="http://data.sfgov.org/resource/_6d9h-4u5v/97">
+<fullstreetname>ACADIA ST</fullstreetname>
+<streetname>ACADIA</streetname>
+<streettype>ST</streettype>
+</row>
+<row _id="98" _uuid="430D407D-0838-40FF-999D-5CE51309C135" _position="98" _address="http://data.sfgov.org/resource/_6d9h-4u5v/98">
+<fullstreetname>ACEVEDO AVE</fullstreetname>
+<streetname>ACEVEDO</streetname>
+<streettype>AVE</streettype>
+</row>
+<row _id="99" _uuid="3424C0AC-C7E7-473A-87F4-C5381EEBAB4F" _position="99" _address="http://data.sfgov.org/resource/_6d9h-4u5v/99">
+<fullstreetname>ACME ALY</fullstreetname>
+<streetname>ACME</streetname>
+<streettype>ALY</streettype>
+</row>
+<row _id="100" _uuid="003048D3-94A0-4F7C-8172-D2D74F560266" _position="100" _address="http://data.sfgov.org/resource/_6d9h-4u5v/100">
+<fullstreetname>ACORN ALY</fullstreetname>
+<streetname>ACORN</streetname>
+<streettype>ALY</streettype>
+</row>
+</row>
