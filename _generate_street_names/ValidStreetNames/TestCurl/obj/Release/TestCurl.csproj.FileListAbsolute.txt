@@ -1,9 +1,0 @@
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\TestCurl.exe.config
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\TestCurl.exe
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\TestCurl.pdb
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\HtmlAgilityPack.dll
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\HtmlAgilityPack.pdb
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\bin\Release\HtmlAgilityPack.xml
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\obj\Release\TestCurl.csprojResolveAssemblyReference.cache
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\obj\Release\TestCurl.exe
-E:\DevCtrlX\mp_ui\_generate_street_names\ValidStreetNames\TestCurl\obj\Release\TestCurl.pdb
