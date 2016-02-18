@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Configuration;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Xml.Linq;
@@ -10,8 +11,8 @@
     public class Program
     {
         // Specific city info
-        private const string TestCityName = "SF";
-        private const string TestSateName = "CA";
+        private const string CityName = "SF";
+        private const string StateName = "CA";
 
         // USPS API configure
         static readonly string UspsApiPrefixUrl = ConfigurationManager.AppSettings["UspsApiPrefixUrl"];
@@ -29,14 +30,34 @@
 
             var streetNames = File.ReadAllLines(InputFileName);
 
-            var countTime = 0;
+            // set a watchTimer for recording time
+            var watchTimer = Stopwatch.StartNew();
+
+            // execute validate
+            CycleValidateStreetNames(streetNames);
+
+            Console.WriteLine("");
+            Console.WriteLine("Succeeded.");
+            watchTimer.Stop();
+            var elapsedSeconds = (double)watchTimer.ElapsedMilliseconds / (double)1000;
+            var averageValidationSeconds = (double)elapsedSeconds / (double)streetNames.Length;
+
+            Console.WriteLine($"Total time eplased: {elapsedSeconds.ToString("F")} s");
+            Console.WriteLine($"Average street name validation time: {averageValidationSeconds.ToString("F")} s");
+        }
+
+        // TODO: this cycle validate method only supply quintuple street names as an union
+        public static void CycleValidateStreetNames(string[] streetNames)
+        {
             var succeededCount = 0;
             var totalCount = streetNames.Length;
+            const int stepLong = 5;
 
-            // neglect last 5 items
-            for (var i = 0; i < streetNames.Length; i += 5)
+            for (var i = 0; i < streetNames.Length; i += stepLong)
             {
-                if (i + 5 >= streetNames.Length)
+                var countTime = i + 5;
+
+                if (countTime >= streetNames.Length)
                 {
                     break;
                 }
@@ -55,10 +76,8 @@
                 var succeededResultCount = RetriveXml(OutputFileName, xmlStringResult);
                 succeededCount += succeededResultCount;
 
-                Show(ref countTime, totalCount, succeededCount);
+                Show(countTime, totalCount, succeededCount);
             }
-
-            Console.WriteLine("Succeeded.");
         }
 
         // Concatenate Url String
@@ -68,32 +87,32 @@
                 new XElement("ZipCodeLookupRequest",
                     new XElement("Address",
                             new XElement("Address2", inputStreetNames[0]),
-                            new XElement("City", TestCityName),
-                            new XElement("State", TestSateName),
+                            new XElement("City", CityName),
+                            new XElement("State", StateName),
                             new XAttribute("ID", "0")
                         ),
                     new XElement("Address",
                             new XElement("Address2", inputStreetNames[1]),
-                            new XElement("City", TestCityName),
-                            new XElement("State", TestSateName),
+                            new XElement("City", CityName),
+                            new XElement("State", StateName),
                             new XAttribute("ID", "1")
                         ),
                     new XElement("Address",
                             new XElement("Address2", inputStreetNames[2]),
-                            new XElement("City", TestCityName),
-                            new XElement("State", TestSateName),
+                            new XElement("City", CityName),
+                            new XElement("State", StateName),
                             new XAttribute("ID", "2")
                         ),
                     new XElement("Address",
                             new XElement("Address2", inputStreetNames[3]),
-                            new XElement("City", TestCityName),
-                            new XElement("State", TestSateName),
+                            new XElement("City", CityName),
+                            new XElement("State", StateName),
                             new XAttribute("ID", "3")
                         ),
                     new XElement("Address",
                             new XElement("Address2", inputStreetNames[4]),
-                            new XElement("City", TestCityName),
-                            new XElement("State", TestSateName),
+                            new XElement("City", CityName),
+                            new XElement("State", StateName),
                             new XAttribute("ID", "4")
                         ),
                     new XAttribute("USERID", UspsUserId)
@@ -138,7 +157,7 @@
                 {
                     for (var i = 0; i < recordCount; i++)
                     {
-                        streamWriter.WriteLine(addressResult[i].Value + ", SF CA " + zipCodeResult[i].Value);
+                        streamWriter.WriteLine(addressResult[i].Value + ", " + CityName + " " + StateName + " " + zipCodeResult[i].Value);
                     }
                 }
 
@@ -151,13 +170,14 @@
         }
 
         // show procudure during running
-        public static void Show(ref int countTime, int totalCountTime, int succeededCount)
+        public static void Show(int countTime, int totalCountTime, int succeededCount)
         {
             // display the procedure
             if (countTime % 17 == 0)
             {
                 var persentNum = (double)countTime / (double)totalCountTime;
                 var succfulRatio = (double) succeededCount / (double) countTime;
+
                 Console.WriteLine(" Successful calculated: " + succeededCount + "\n Successful ratio: " +
                                   succfulRatio.ToString("P") + "\n (" + countTime + "/" + totalCountTime + ")  " +
                                   persentNum.ToString("P"));
