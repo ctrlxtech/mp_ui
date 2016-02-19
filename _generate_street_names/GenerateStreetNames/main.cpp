@@ -13,19 +13,21 @@ ofstream myfile;
 vector<char *> typeList;
 vector<string> nameList;
 
-void GenerateNumberGenerate(int number){
+void GenerateNumberGenerate(int number, bool isSuffix = true){
     int lastNum = number % 10;
 
     myfile << number;
 
-    if (lastNum == 1){
-        myfile << "st";
-    } else if (lastNum == 2) {
-        myfile << "nd";
-    } else if (lastNum == 3) {
-        myfile << "rd";
-    } else {
-        myfile << "th";
+    if (isSuffix){
+        if (lastNum == 1){
+            myfile << "st";
+        } else if (lastNum == 2) {
+            myfile << "nd";
+        } else if (lastNum == 3) {
+            myfile << "rd";
+        } else {
+            myfile << "th";
+        }
     }
 
     myfile << ", ";
@@ -102,7 +104,7 @@ void ShowAllRoadType(){
 
 void GenerateSpecificSequence(const char* content, int startNum, int endNum){
     for (int i = startNum; i < endNum; ++i){
-        GenerateNumberGenerate(i);
+        GenerateNumberGenerate(i, false);
         myfile << content << endl;
     }
 }
@@ -194,11 +196,14 @@ void GenerateStreetName()
 
                 GenerateSpecificSequence(content, 1, 100);
 
-                GenerateSpecificSequence(content, 100, 250);
+                GenerateSpecificSequence(content, 100, 150);
+
+                GenerateSpecificSequence(content, 200, 250);
 
                 GenerateSpecificSequence(content, 1000, 1100);
 
                 GenerateSpecificSequence(content, 2000, 2100);
+
 
             } else if (strcmp(conditionName, "streettype") == 0){ // streettype type select
                 content = surfaceChild->GetText();

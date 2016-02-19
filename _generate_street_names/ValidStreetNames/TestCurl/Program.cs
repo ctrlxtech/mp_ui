@@ -22,6 +22,9 @@
         static readonly string OutputFileName = ConfigurationManager.AppSettings["OutputFileName"];
         static readonly string TargetElementNameToFind = ConfigurationManager.AppSettings["TargetElementNameToFind"];
         static readonly string TargetElementAddressToFind = ConfigurationManager.AppSettings["TargetElementAddressToFind"];
+        
+        // set a watchTimer for recording total time
+        public static Stopwatch WatchTimer = Stopwatch.StartNew();
 
         public static void Main(string[] args)
         {
@@ -30,30 +33,22 @@
 
             var streetNames = File.ReadAllLines(InputFileName);
 
-            // set a watchTimer for recording time
-            var watchTimer = Stopwatch.StartNew();
-
             // execute validate
             CycleValidateStreetNames(streetNames);
 
-            Console.WriteLine("");
-            Console.WriteLine("Succeeded.");
-            watchTimer.Stop();
-            var elapsedSeconds = (double)watchTimer.ElapsedMilliseconds / (double)1000;
-            var averageValidationSeconds = (double)elapsedSeconds / (double)streetNames.Length;
-
-            Console.WriteLine($"Total time eplased: {elapsedSeconds.ToString("F")} s");
-            Console.WriteLine($"Average street name validation time: {averageValidationSeconds.ToString("F")} s");
+            // show finla statistic result
+            var totalLength = streetNames.Length;
+            ShowResult(totalLength);
         }
 
-        // TODO: this cycle validate method only supply quintuple street names as an union
+        // TODO: this cycle validate method only supply quintuple street names as an union, last five or less items may be ignored
         public static void CycleValidateStreetNames(string[] streetNames)
         {
             var succeededCount = 0;
             var totalCount = streetNames.Length;
             const int stepLong = 5;
 
-            for (var i = 0; i < streetNames.Length; i += stepLong)
+            for (var i = 0; i < totalCount; i += stepLong)
             {
                 var countTime = i + 5;
 
@@ -76,7 +71,10 @@
                 var succeededResultCount = RetriveXml(OutputFileName, xmlStringResult);
                 succeededCount += succeededResultCount;
 
-                Show(countTime, totalCount, succeededCount);
+                ShowPrecudure(countTime, totalCount, succeededCount);
+
+                // street jump
+                StreetJump(ref i, succeededResultCount, totalCount, streetNames);
             }
         }
 
@@ -169,13 +167,57 @@
             }
         }
 
+        public static void StreetJump(ref int i, int succeededResultCount, int totalCount, string[] streetNames)
+        {
+            try
+            {
+                if (succeededResultCount != 0) return;
+
+                var currentStreetAddress = int.Parse(streetNames[i].Split(',').ToList()[0]);
+                var currentStreetName = streetNames[i].Split(',').ToList()[1];
+                if (currentStreetName == null)
+                {
+                    return;
+                }
+
+                for (var j = i + 1; j < totalCount; ++j)
+                {
+                    var nextStreetAddress = int.Parse(streetNames[j].Split(',').ToList()[0]);
+                    var nextStreetName = streetNames[j].Split(',').ToList()[1];
+                    if (nextStreetName == null)
+                    {
+                        continue;
+                    }
+
+                    if (nextStreetName == currentStreetName &&
+                        Math.Abs(nextStreetAddress - currentStreetAddress) > 100)
+                    {
+                        i = j;
+                        break;
+                    }
+
+                    if (nextStreetName != currentStreetName)
+                    {
+                        i = j;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("exception occured");
+                Console.WriteLine(ex.Message);
+                // ignored
+            }
+        }
+
         // show procudure during running
-        public static void Show(int countTime, int totalCountTime, int succeededCount)
+        public static void ShowPrecudure(int countTime, int totalCountTime, int succeededCount)
         {
             // display the procedure
             if (countTime % 17 == 0)
             {
-                var persentNum = (double)countTime / (double)totalCountTime;
+                var persentNum = (double) countTime / (double) totalCountTime;
                 var succfulRatio = (double) succeededCount / (double) countTime;
 
                 Console.WriteLine(" Successful calculated: " + succeededCount + "\n Successful ratio: " +
@@ -184,6 +226,21 @@
             }
 
             countTime += 5;
+        }
+
+        public static void ShowResult(int totalLength)
+        {
+
+            // print detail result
+            Console.WriteLine("");
+            Console.WriteLine("Succeeded.");
+            WatchTimer.Stop();
+            var elapsedSeconds = (double)WatchTimer.ElapsedMilliseconds / (double)1000;
+            var averageValidationSeconds = (double)elapsedSeconds / (double)totalLength;
+
+            Console.WriteLine($"Total time eplased: {elapsedSeconds.ToString("##.00000")} s");
+            Console.WriteLine($"Estimate average street name validation time: {averageValidationSeconds.ToString("##.00000")} s");
+
         }
 
         // below is not used code, keep it maybe be used later
