@@ -11,8 +11,8 @@
     public class Program
     {
         // Specific city info
-        private const string CityName = "SF";
-        private const string StateName = "CA";
+        private const string CityName = "Chicago";
+        private const string StateName = "IL";
 
         // USPS API configure
         static readonly string UspsApiPrefixUrl = ConfigurationManager.AppSettings["UspsApiPrefixUrl"];

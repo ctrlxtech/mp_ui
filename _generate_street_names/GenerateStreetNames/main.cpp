@@ -7,8 +7,9 @@ using namespace tinyxml2;
 ofstream myfile;
 
 #define SetRandomRange 2500
-#define StreePath "./ReadFile/SFOStreet.xml"
+#define StreePath "./ReadFile/Chicago.xml"
 #define NamePath "./ReadFile/americanNames.txt"
+#define OutPutGenerateData "../Common/GenerateStreets.txt"
 
 vector<char *> typeList;
 vector<string> nameList;
@@ -171,7 +172,7 @@ char* ExpandRoadType(char* roadType){
 
 void GenerateStreetName()
 {
-    myfile.open ("input_test.txt");
+    myfile.open (OutPutGenerateData);
 
 	XMLDocument doc;
 	doc.LoadFile(StreePath);
@@ -190,7 +191,7 @@ void GenerateStreetName()
         for (; surfaceChild; surfaceChild = surfaceChild->NextSiblingElement()){
             const char* conditionName = surfaceChild->Name();
 
-            if (strcmp(conditionName, "streetname") == 0){ // streetname type select
+            if (strcmp(conditionName, "full_street_name") == 0){ // streetname type select
                 content = surfaceChild->GetText();
                 // printf("%s", content);
 

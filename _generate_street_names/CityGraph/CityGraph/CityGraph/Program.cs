@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Threading;
-using System.Web;
-using System.Xml.Linq;
-using HtmlAgilityPack;
-
-namespace CityGraph
+﻿namespace CityGraph
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Web;
+    using System.Xml.Linq;
+
     public class Program
     {
         const string InputFileName = "cities.txt";
@@ -28,6 +24,8 @@ namespace CityGraph
 
             for (var i = 0; i < streetNames.Length; ++i)
             {
+                var nearestCityList = new List<Tuple<string, double>>();
+
                 for (var j = 0; j < streetNames.Length; ++j)
                 {
                     if (i == j) continue;
@@ -41,13 +39,23 @@ namespace CityGraph
                     if (result == null) continue;
 
                     streetMap.Add(Tuple.Create(streetNames[i], streetNames[j]), result.Item1);
+                    nearestCityList.Add(Tuple.Create(streetNames[j], result.Item1));
+                }
+
+                nearestCityList.Sort();
+
+                Console.WriteLine("City " + streetNames[i] + ": ");
+                Console.WriteLine("nearest cities: ");
+                foreach (var city in nearestCityList)
+                {
+                    Console.WriteLine(city);
                 }
             }
 
-            foreach (var streetPair in streetMap)
-            {
-                Console.WriteLine(streetPair.Key.Item1 + " to " + streetPair.Key.Item2 + " is: " + streetPair.Value);
-            }
+            //foreach (var streetPair in streetMap)
+            //{
+            //    Console.WriteLine(streetPair.Key.Item1 + " to " + streetPair.Key.Item2 + " is: " + streetPair.Value);
+            //}
 
         }
 
