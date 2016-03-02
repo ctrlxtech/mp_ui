@@ -10,16 +10,50 @@
     public class Program
     {
         const string InputFileName = "cities.txt";
+        const string OutputFileName = "cityRelationshipResult.txt";
         const string GoogleGeoCodingUrl = "https://maps.googleapis.com/maps/api/geocode/xml?address=";
         const string GoogleDirectionUrl = "https://maps.googleapis.com/maps/api/directions/xml?";
-        const string GoogleApiKey = "&key=AIzaSyBaVMaAW_bjSd5V-USdDTlrpAJ7-rUzrBI";
+
+        const string GoogleApiKey1 = "&key=AIzaSyBaVMaAW_bjSd5V-USdDTlrpAJ7-rUzrBI";
+        const string GoogleApiKey = "&key=AIzaSyDeZX1ihr92qKbG2P0737CcjAunS5mV8K4";
+
+        const double TargetDistanceRange = 10.0;
 
         static void Main(string[] args)
         {
+            // create new file
+            File.WriteAllText(OutputFileName, "");
+
             var streetNames = File.ReadAllLines(InputFileName);
 
             Array.Sort(streetNames);
 
+            var cities = (from t in streetNames
+                let geoCodingUrl = ConcatenateGeoCodingUrlString(t)
+                let location = GetGeoLocation(geoCodingUrl)
+                select Tuple.Create(t, location.Item1, location.Item2)).ToList();
+
+            var length = streetNames.Length;
+
+            for (var i = 0; i < length; ++i)
+            {
+                for (var j = 0; j < length; ++j)
+                {
+                    if (i == j) continue;
+
+                    var result = GetDistanceBetweenPoints(
+                        cities[i].Item2,
+                        cities[i].Item3,
+                        cities[j].Item2,
+                        cities[j].Item3);
+
+                    Console.WriteLine(cities[i].Item1 + " to " + cities[j].Item1 + " for " + result);
+                }
+            }
+        }
+
+        public static void CalculateDistance(string[] streetNames)
+        {
             var streetMap = new Dictionary<Tuple<string, string>, double>();
 
             for (var i = 0; i < streetNames.Length; ++i)
@@ -42,21 +76,33 @@
                     nearestCityList.Add(Tuple.Create(streetNames[j], result.Item1));
                 }
 
-                nearestCityList.Sort();
+                nearestCityList.Sort((x, y) => x.Item2.CompareTo(y.Item2));
 
-                Console.WriteLine("City " + streetNames[i] + ": ");
-                Console.WriteLine("nearest cities: ");
-                foreach (var city in nearestCityList)
+                using (var streamWriter = File.AppendText(OutputFileName))
                 {
-                    Console.WriteLine(city);
+                    streamWriter.WriteLine("City " + streetNames[i] + ": ");
+                    const int topDistance = 10;
+                    var length = nearestCityList.Count > topDistance ? topDistance : nearestCityList.Count;
+
+                    for (var index = 0; index < length; ++index)
+                    {
+                        var targetCity = nearestCityList[index].Item1;
+                        var distance = nearestCityList[index].Item2;
+                        var miles = (distance * 0.00062137).ToString("F1");    //transfer to miles
+
+                        if (double.Parse(miles) > TargetDistanceRange)
+                        {
+                            break;
+                        }
+
+                        streamWriter.WriteLine(targetCity + " " + distance + " meters or " + miles + " miles");
+                    }
+
+                    streamWriter.WriteLine();
                 }
+
+                ShowPrecudure(i, streetNames.Length);
             }
-
-            //foreach (var streetPair in streetMap)
-            //{
-            //    Console.WriteLine(streetPair.Key.Item1 + " to " + streetPair.Key.Item2 + " is: " + streetPair.Value);
-            //}
-
         }
 
         // Concatenate Url String
@@ -120,12 +166,13 @@
                     longitudeValue = double.Parse(longitude);
                 }
 
-                Console.WriteLine(latitude + " " + longitude);
+                // Console.WriteLine(latitude + " " + longitude);
 
                 return new Tuple<double, double>(latitudeValue, longitudeValue);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return null;
             }
         }
@@ -180,6 +227,18 @@
                 Console.WriteLine(ex);
                 return null;
             }
+        }
+
+        // show procudure during running
+        public static void ShowPrecudure(int countTime, int totalCountTime)
+        {
+            // display the procedure
+            var persentNum = (double) countTime/(double) totalCountTime;
+
+            Console.WriteLine("(" + countTime + "/" + totalCountTime + ")  " +
+                              persentNum.ToString("P"));
+
+            countTime += 5;
         }
 
         public static double GetDistanceBetweenPoints(double lat1, double long1, double lat2, double long2)
